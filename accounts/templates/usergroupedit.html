@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}
+用户组编辑
+{% endblock %}
+
+{% block main_content %}
+        <div class="row">
+        <div class="col-xs-6">
+            <div class="box box-info">
+                <div class="box-body">
+                    <form action="" method="POST"  enctype="multipart/form-data">                        {% csrf_token %}
+
+                        {{ form.as_p }}
+                        <a href="{{ success_url }}"><button class="btn btn-primary" type="button" >取消</button></a>
+                        <input type="submit" class="btn btn-primary" name="添加" id="Save">
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{#    <div class="row">#}
+{#        <div class="col-sm-10">#}
+{#            <div class="ibox float-e-margins">#}
+{#                <div class="box primary">#}
+{#                    <div class="box-header">#}
+{#                        <h3 class="box-title"> 用户组--{{ usergroup.name }}</h3>#}
+{#                    </div>#}
+{#                    <form role="form" method="post">{% csrf_token %}#}
+{#                        <div class="box-body">#}
+{#                            {% if error %}#}
+{#                                <div class="alert alert-warning text-center">{{ error }}</div>#}
+{#                            {% endif %}#}
+{#                            {% if msg %}#}
+{#                                <div class="alert alert-success text-center">{{ msg }}</div>#}
+{#                            {% endif %}#}
+{#                            <div class="form-group">#}
+{#                                <label for="group_name" class="col-sm-2 control-label" >用户组名<span class="red-fonts">*</span></label>#}
+{#                                <input id="name" name="name" placeholder="Group name" type="text" class="form-control" value="{{ usergroup.name }}">#}
+{#                            </div>#}
+{##}
+{#                            <div class="hr-line-dashed"></div>#}
+{#                            <div class="form-group">#}
+{#                                <label for="users" class="col-sm-2 control-label" >用户</label>#}
+{#                                <div class="col-sm-4">#}
+{#                                    <select id="users_not_select" name="users_not_select" size="12" class="form-control m-b" multiple>#}
+{#                                        <!--可选用户-->#}
+{#                                        {% for user in usergroup.user_set.all %}#}
+{#                                            <option value="{{ user.id }}">{{ user.username }}</option>#}
+{#                                        {% endfor %}#}
+{#                                    </select>#}
+{#                                </div>#}
+{#                                <div class="col-sm-1">#}
+{#                                    <div class="btn-group" style="margin-top: 50px;">#}
+{#                                        <button type="button" class="btn btn-white" onclick="move('users_not_select', 'users')"><i class="fa fa-chevron-right"></i></button>#}
+{#                                        <button type="button" class="btn btn-white" onclick="move('users', 'users_not_select')"><i class="fa fa-chevron-left"></i> </button>#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{#                                <div class="col-sm-4">#}
+{#                                    <select id="users" name="users" class="form-control m-b" size="12"  multiple>#}
+{#                                        <!--已选用户-->#}
+{#                                        {% for user in usergroup.user_set.all %}#}
+{#                                            <option value="{{ user.id }}">{{ user.username }}</option>#}
+{#                                        {% endfor %}#}
+{#                                    </select>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="hr-line-dashed"></div>#}
+{#                            <div class="form-group">#}
+{#                                <label for="descriptions" class="col-sm-2 control-label">描述</label>#}
+{#                                <input id="descriptions" name="descriptions" placeholder="descriptions" type="text" class="form-control" value="{{ usergroup.descriptions }}">#}
+{#                            </div>#}
+{##}
+{#                            <div class="hr-line-dashed"></div>#}
+{#                            <div class="form-group">#}
+{#                                <button class="btn btn-white" type="reset">取消</button>#}
+{#                                <button id="submit_button" class="btn btn-primary" type="submit">确认保存</button>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                    </form>#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{% endblock %}
+
+{% block end_js %}
+    <script type="application/javascript">
+        function move(from, to, from_o, to_o) {
+            $("#" + from + " option").each(function () {
+                if ($(this).prop("selected") == true) {
+                    $("#" + to).append(this);
+                    if( typeof from_o !== 'undefined'){
+                        $("#"+to_o).append($("#"+from_o +" option[value='"+this.value+"']"));
+                    }
+                }
+            });
+        }
+
+        function move_left(from, to, from_o, to_o) {
+            $("#" + from + " option").each(function () {
+                if ($(this).prop("selected") == true) {
+                    $("#" + to).append(this);
+                    if( typeof from_o !== 'undefined'){
+                        $("#"+to_o).append($("#"+from_o +" option[value='"+this.value+"']"));
+                    }
+                }
+                $(this).attr("selected",'true');
+            });
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block console_name %}
+    日志
+{% endblock %}
+{% block extra_css %}
+{% endblock %}
+
+
+{% block main_content %}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="table_data1" class="table table-bordered table-   ">
+                        <thead>
+
+                        <tr>
+                            <th>时间</th>
+                            <th>用户</th>
+                            <th>主机</th>
+                            <th>日志</th>
+
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        {% for i in result %}
+                            <tr>
+                                <td>{{ i.timestamp|date:"Y-m-d H:i:s" }}</td>
+                                <td>{{ i.user.username }}</td>
+                                <td>{{ i.host }}</td>
+                                <td>{{ i.log }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        {% endif %}
+                        <li>
+                            <a>
+                                第{{ page_obj.number }}页|共{{ page_obj.paginator.num_pages }}页
+                            </a>
+                        </li>
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+{% block end_js %}
+    <!-- jQuery 2.0.2 -->
+    {#    <script src="/static/js/googleapis/jquery.min.js"></script>#}
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+{#            $("#table_data").dataTable({#}
+{#                "order": [[ 0, "desc" ]]#}
+{#            });#}
+            //设定table_data 数据样式以及格式
+            $('#table_data1').dataTable({
+                "bPaginate": false,//关闭js分页
+                "bLengthChange": false,//关闭表格宽度调整
+                "bFilter": true,//开启filter功能
+                "bSort": true,//开启排序功能
+                "order": [[ 0, "desc" ]],
+                "bInfo": false,
+                "bAutoWidth": false
+            });
+        });
+    </script>
+    {#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var click_add = document.getElementById("addform");
+                click_add.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+

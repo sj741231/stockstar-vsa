@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{#{% load idc_tags %}#}
+{% block title %}运维平台-域名解析{% endblock %}
+
+
+
+{% block console_name %}
+   <a href="{% url 'bind:domainlist' %}">域名管理</a> /{{ zone }}
+{% endblock %}
+{% block ol_a_link %}
+    {% if zone %}
+    <li><a id="addform" data-toggle="modal" href="{% url 'bind:addrecord' zone=zone.id %}"><i class="fa fa-plus"></i>新增</a></li>
+{% endif %}
+{% endblock %}
+{% block main_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    {{ domain }}
+
+                </div>
+
+                <div class="box-body">
+                    <table id="table_data" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>域</th>
+                            <th>主机记录</th>
+                            <th>记录类型</th>
+                            <th>记录值</th>
+                            <th>权重</th>
+                            <th>ttl</th>
+                            <th>操作</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in object_list %}
+                            <tr>
+                                <td>{{ i.zone }}</td>
+                                <td>{{ i.host }}</td>
+                                <td>{{ i.type }}</td>
+                                <td>{{ i.data }}</td>
+                                <td>{{ i.idc.name }}</td>
+                                <td>{{ i.ttl }}</td>
+
+                                <td>
+
+                                    {% if zone %}<a href="{% url 'bind:dnsrecordupdate' zone.id i.id %}">修改</a> &nbsp;
+                                    <a href="#">暂停</a>&nbsp;
+                                    <a href="{% url 'bind:delrecord'  zone.id i.id %}">删除</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        {% endif %}
+                        <li>
+                            <a>
+                                第{{ page_obj.number }}页|共{{ page_obj.paginator.num_pages }}页
+                            </a>
+                        </li>
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block end_js %}
+{#    <script>#}
+{#        $(function() {#}
+{#            $("#example1").dataTable();#}
+{#            //设定table_data 数据样式以及格式#}
+{#            $('#table_data').dataTable({#}
+{#                "bPaginate": false,//关闭js分页#}
+{#                "bLengthChange": false,//关闭表格宽度调整#}
+{#                "bFilter": true,//开启filter功能#}
+{#                "bSort": true,//开启排序功能#}
+{#                "bInfo": false,#}
+{#                "bAutoWidth": false#}
+{#            });#}
+{#        });#}
+{#    </script>#}
+{#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var test1 = document.getElementById("addform");
+                test1.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+

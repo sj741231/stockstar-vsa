@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block title %}证金运维平台{% endblock %}
+
+{% block console_name %}
+    ad用户组关系管理
+{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}
+
+{% block ol_a_link %}
+    <li><a id="addform" data-toggle="modal" href="#uploadfile"><i class="fa fa-plus"></i>新增</a></li>
+{#        <li><a data-toggle="modal" href="#upload2"><i class="fa fa-plus"></i>从xls文件导入</a></li>#}
+    <li><a data-toggle="modal" href="{% url 'admanage:xls_update' %}"><i class="fa fa-plus"></i>从xls文件导入</a></li>
+{##}
+{##}
+    <div id="uploadfile" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">添加</h4>
+                </div>
+
+                <form class="form-horizontal" method="POST"  enctype="multipart/form-data" name="form"> {% csrf_token %}
+                    <div class="modal-body">
+                        {% for field in form %}
+                            <div class="fieldWrapper">
+                                {{ field.errors }}
+                                {{ field.label_tag }}{{ field }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <input type="submit" class="btn btn-primary" name="添加" id="Save" style="margin-left:400px">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="upload2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">xls导入</h4>
+                </div>
+
+                <form id="id_form2" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="file">文件</label>
+                            <input type="file" id="id_file" name="file">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn bnt-primay" >导入</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block main_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+
+                <div class="box-body">
+                    <table id="table_data" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>ad目录</th>
+
+                            <th>部门</th>
+                            <th>属组</th>
+                            <th>公司</th>
+                            <th>操作</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in object_list %}
+                            <tr>
+                                <td>{{ i.adtree }}</td>
+                                <td>{{ i.department }}</td>
+                                <td>{{ i.attachto }}</td>
+                                <td>{{ i.company }}</td>
+
+                                <td>
+                                    <a href="{% url 'admanage:grouprelation_update' pk=i.id %}">修改</a> &nbsp; | &nbsp;
+                                    <a href="{% url 'admanage:grouprelation_del' pk=i.id %}">删除</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block end_js %}
+{#    <script type="application/javascript" src="/static/js/jquery.min.js"></script>#}
+    <script>
+        $(function() {
+            $("#example1").dataTable();
+            //设定table_data 数据样式以及格式
+            $('#table_data').dataTable();
+        });
+        $(document).ready(function(){
+            $.ajaxSetup({
+                data:{csrfmiddlewaretoken:'{{ csrf_token }}'}
+            });
+            var formData = new FormData();
+            formData.append('file', $('#id_file')[0].files[0]);
+            $('#id_form2').submit(function(){
+                $.ajax({
+                    url:"/admanage/grouprelation/upload/xls",
+                    type:"POST",
+                    data:formData,
+                    success:function(result){
+                        alert(result);
+                    }
+                });
+                return false;
+            })
+        });
+
+
+    </script>
+    {#    表单验证失败弹出表单#}
+{#    {% if form.errors %}#}
+{#        <script>#}
+{#            $(function() {#}
+{#                var test1 = document.getElementById("addform");#}
+{#                test1.click();#}
+{#            });#}
+{#        </script>#}
+{#    {% endif %}#}
+{% endblock %}
+
+
+
+
+
+

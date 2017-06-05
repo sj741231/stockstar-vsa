@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}vsystem-video-{{ live.name }}{% endblock %}
+
+{% block console_name %}
+    {{ live.name }}
+{% endblock %}
+{% block extra_js %}
+<script type="application/javascript" src="/static/jwplayer/jwplayer.js"></script>
+{% endblock %}
+{% block ol_a_link %}
+
+{% endblock %}
+{% block main_content %}
+    <div class="row">
+{#{% for i in live.video_nodes.all %}#}
+    <div class="col-md-6">
+    <div class="box box-success box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ i.name }}</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-toggle="collapse">
+                    <i class="fa fa-minus"></i>
+
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div id="{{ live.id }}"></div>
+
+            <script type='text/javascript'>
+                jwplayer('{{ live.id }}').setup({
+                    'flashplayer': '/static/jwplayer/player.swf',
+                    'file': 'zjwlyx',
+                    'streamer': 'rtmp://172.16.35.10/live',
+                    'controlbar': 'bottom',
+                    'width': '100%',
+                    'aspectratio':'12:9',
+                    'autostart':'true'
+                    {#                'height': '100%'#}
+                });
+            </script>
+        </div>
+
+    </div>
+{#        {{ i.name }}#}
+
+
+{#        <script type="application/javascript">#}
+{#            var flashvars={#}
+{#                f:'rtmp://{{ i.ip }}/live/{{ live.stream_name }}',#}
+{#                c:0,#}
+{#                p:2,#}
+{#                b:0,#}
+{#                i:'/static/images/letitgo.jpg',#}
+{#                my_url:encodeURIComponent(window.location.href)#}
+{#            };#}
+{#            var video=['rtmp://{{ i.ip }}/live/{{ live.stream_name }}'];#}
+{#            CKobject.embed('/static/ckplayer/ckplayer.swf','{{ i.id }}','ckplayer_a1','100%','100%',false,flashvars,video);#}
+{#        </script>#}
+
+    </div>
+
+{#{% endfor %}#}
+
+    </div>
+{% endblock %}
+
+{% block end_js %}
+
+{#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var test1 = document.getElementById("addform");
+                test1.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+

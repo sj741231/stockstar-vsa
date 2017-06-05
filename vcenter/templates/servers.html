@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load jsonfilters %}
+{% block title %}zhengjin99运维·平台--物理机{% endblock %}
+
+
+{% block extra_css %}
+{#    <link rel="stylesheet" href="/static/DataTables-1.10.12/media/css/">#}
+
+{% endblock %}
+
+{#{% block console_name %}#}
+{#    vm列表#}
+{#{% endblock %}#}
+{% block ol_a_link %}
+
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+{#        <div class="col-xs-12">#}
+{#            <div class="btn-group">#}
+{#                <a href="#" class="btn btn-sm btn-primary btn-flat pull-left" name="pub_type">采集所有主机信息</a>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+
+                <div class="box-body">
+                    <table id="table_data" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>主机名</th>
+                            <th>cpu</th>
+                            <th>内存</th>
+                            <th>ip</th>
+                            <th>归属</th>
+                            <th>虚拟机数量</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in result %}
+
+                            <tr>
+                                <td><a href="{{ i.get_absolute_url }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ i.name }}">{{ i.name|slice:"20" }}</a></td>
+                                <td>{{ i.cpu }}</td>
+                                <td>{{ i.memory | filesizeformat }}  </td>
+                                <td>{{ i.ip }}</td>
+                                <td>{{ i.esxi_groups }}</td>
+                                <td>{{ i.virtualhost_set.all.count }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /box-body -->
+
+            </div>
+            <!-- /box -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+{% endblock %}
+
+{% block end_js %}
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+            $("#table_data").dataTable({
+                "iDisplayLength":25,
+                "bSort":false,
+                "autoWidth": true,//自动宽度
+                "lengthChange": false,//是否允许用户自定义显示数量
+                "oLanguage": {//国际语言转化
+                    "oAria": {
+                        "sSortAscending": " - click/return to sort ascending",
+                        "sSortDescending": " - click/return to sort descending"
+                    },
+                    "sLengthMenu": "显示 _MENU_ 记录",
+                    "sZeroRecords": "对不起，查询不到任何相关数据",
+                    "sEmptyTable": "未有相关数据",
+                    "sLoadingRecords": "正在加载数据-请等待...",
+                    "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录。",
+                    "sInfoEmpty": "当前显示0到0条，共0条记录",
+                    "sInfoFiltered": "（数据库中共为 _MAX_ 条记录）",
+                    "sProcessing": "<img src='../resources/user_share/row_details/select2-spinner.gif'/> 正在加载数据...",
+                    "sSearch": "模糊查询：",
+                    "sUrl": "",
+                    //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": " 上一页 ",
+                        "sNext": " 下一页 ",
+                        "sLast": " 尾页 "
+                    }
+                },
+                "columnDefs": [
+                    {
+                        orderable: false,
+
+                        targets: 0 },
+                    {
+                        orderable: false,
+
+                        targets: 1 }
+                ],//第一列与第二列禁止排序
+
+            });
+
+           $('.toggle-vis').on('change', function (e) {
+               e.preventDefault();
+               console.log($(this).attr('data-column'));
+               var column = table.column($(this).attr('data-column'));
+               column.visible(!column.visible());
+           });
+            //设定table_data 数据样式以及格式
+        });
+    </script>
+{#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var test1 = document.getElementById("addform");
+                test1.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+

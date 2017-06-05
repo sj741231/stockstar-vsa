@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}
+    用户主机授权
+{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/AdminLTE/plugins/select2/select2.css">
+{% endblock %}
+
+
+{% block main_content %}
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Multiple</label>
+                <select class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                  <option>Alabama</option>
+                  <option>Alaska</option>
+                  <option>California</option>
+                  <option>Delaware</option>
+                  <option>Tennessee</option>
+                  <option>Texas</option>
+                  <option>Washington</option>
+                </select>
+              </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+
+{% block end_js %}
+    <!-- jQuery 2.0.2 -->
+    <script src="/static/AdminLTE/plugins/select2/select2.full.js"></script>
+    <script type="text/javascript">
+$(".select2").select2();
+</script>
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+            $("#table_data").dataTable({
+                "iDisplayLength":25
+
+            }
+            );
+            $(".form-control-host").select2();
+            //设定table_data 数据样式以及格式
+{#            $('#table_data').dataTable({#}
+{#                "bPaginate": false,//关闭js分页#}
+{#                "bLengthChange": false,//关闭表格宽度调整#}
+{#                "bFilter": true,//开启filter功能#}
+{#                "bSort": true,//开启排序功能#}
+{#                "bInfo": false,#}
+{#                "bAutoWidth": false#}
+{#            });#}
+        });
+    </script>
+    {#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var click_add = document.getElementById("addform");
+                click_add.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}

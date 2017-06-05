@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}
+      通知记录
+{% endblock %}
+{% block extra_css %}
+
+{% endblock %}
+
+{% block ol_a_link %}
+
+{% endblock %}
+{% block main_content %}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+            <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="table_data" class="table table-bordered">
+                        <thead>
+
+                        <tr>
+                            <th>时间</th>
+                            <th>通知信息</th>
+                                                        <th>用户</th>
+
+
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        {% for i in result %}
+                            <tr>
+                                <td>{{ i.notifytime }}</td>
+                                <td>{{ i.notifymsg }}</td>
+                                <td>
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ i.notifyusers }}">
+                                            <i class="fa fa-warning"></i>
+                                    {{ i.notifyusers|slice:"10" }}
+                                        </a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+{% block end_js %}
+    <!-- jQuery 2.0.2 -->
+    <script src="/static/AdminLTE/plugins/select2/select2.full.min.js"></script>
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+            $("#table_data").dataTable({
+                "iDisplayLength":25
+
+            }
+            );
+            //设定table_data 数据样式以及格式
+{#            $('#table_data').dataTable({#}
+{#                "bPaginate": false,//关闭js分页#}
+{#                "bLengthChange": false,//关闭表格宽度调整#}
+{#                "bFilter": true,//开启filter功能#}
+{#                "bSort": true,//开启排序功能#}
+{#                "bInfo": false,#}
+{#                "bAutoWidth": false#}
+{#            });#}
+        });
+    </script>
+    {#    表单验证失败弹出表单#}
+
+{% endblock %}
+
+
+

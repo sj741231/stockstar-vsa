@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}证金运维平台{% endblock %}
+{% load jsonfilters %}
+
+{% block console_name %}
+    增加AD用户详情
+{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}
+
+{% block extra_css %}
+    <style> tr,td{font-size:8px;} </style>
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>用户</th>
+                            <th>账户</th>
+                            <th>部门</th>
+                            <th>属组</th>
+
+{#                            <th>文件</th>#}
+                            <th>时间</th>
+{#                            <th>状态</th>#}
+                            <th>详情</th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for object in object_list %}
+                            <tr>
+                                <td>
+                                    {% if not object.addaduserstatus %}
+                                        <i class="fa fa-warning"></i>
+                                    {% endif %}
+                                    {{ object.aduser }}
+
+                                </td>
+                                <td>{{ object.adaccount }}</td>
+                                <td>{{ object.department }}</td>
+                                <td>
+{#                                    {% for vlan in object.vlangroup|jsonify %}#}
+{#                                        {% for k,v in vlan.items %}#}
+{#                                            {{ k }}:{{ v }}#}
+{##}
+{#                                        {% endfor %}#}
+{##}
+{##}
+{#                                    {% endfor %}#}
+
+                                    {{ object.vlangroup|slice:"30" }}
+                                </td>
+{#                                <td>#}
+{#                                    {{ object.aduserfile }}#}
+{#                                </td>#}
+                                <td>{{ object.timestamp|date:"Y-m-d H:i" }}</td>
+{#                                <td>#}
+{#                                    {{ object.addaduserstatus }}#}
+{#                                #}
+{#                                </td>#}
+                                <td>
+                                    {{ object.detail }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block end_js %}
+{#    <script type="application/javascript" src="/static/js/jquery.min.js"></script>#}
+    <script>
+        $(function() {
+            $("#example1").dataTable({
+                "bSort":false
+            });
+            //设定table_data 数据样式以及格式
+            $('#table_data').dataTable(
+                    {
+                "bPaginate": true,//关闭js分页
+                "bLengthChange": true,//关闭表格宽度调整
+                "bFilter": true,//开启filter功能
+                "bSort": false,//开启排序功能
+                "bInfo": true,
+                "bAutoWidth": true
+            }
+            );
+        });
+
+    </script>
+{% endblock %}
+
+
+
+
+
+

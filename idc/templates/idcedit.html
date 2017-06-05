@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{#{% load idc_tags %}#}
+{% block title %}vsystem-idc管理{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}
+
+
+{% block console_name %}
+    idc编辑
+{% endblock %}
+{% block ol_a_link %}
+
+{% endblock %}
+{% block main_content %}
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="box box-info">
+                <div class="box-body">
+                    <form action="" method="POST"  enctype="multipart/form-data">                        {% csrf_token %}
+
+                        {{ form.as_p }}
+                        <a href="{{ success_url }}"><button class="btn btn-primary" type="button" >取消</button></a>
+                        <input type="submit" class="btn btn-primary" name="添加" id="Save">
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+

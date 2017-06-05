@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{#{% load idc_tags %}#}
+{% block title %}IP与MAC对应记录{% endblock %}
+
+
+{% block extra_css %}
+{#    <link rel="stylesheet" href="/static/DataTables-1.10.12/media/css/">#}
+
+{% endblock %}
+
+{#{% block console_name %}#}
+{#    vm列表#}
+{#{% endblock %}#}
+{% block ol_a_link %}
+
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">记录表</h3>
+                    <div class="box-tools">
+                        <form method="get">
+
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="q" class="form-control pull-right" placeholder="Search">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="box-body">
+
+
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>ip地址</th>
+                            <th>mac地址</th>
+                            <th>时间</th>
+                            <th>交换机</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in object_list %}
+
+                            <tr>
+                                <td>{{ i.authuser }}</td>
+                                <td>{{ i.ip }}</td>
+                                <td>{{ i.mac }}</td>
+                                <td>{{ i.checktime|date:"Y-m-d H:i" }}</td>
+                                <td>
+                                  {{ i.switch }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /box-body -->
+                <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        {% endif %}
+                        <li>
+                            <a>
+                                第{{ page_obj.number }}页|共{{ page_obj.paginator.num_pages }}页
+                            </a>
+                        </li>
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+            <!-- /box -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+{% endblock %}
+
+{% block end_js %}
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+            $("#table_data").dataTable({
+                "iDisplayLength":25,
+                "bSort":false,
+                "autoWidth": true,//自动宽度
+                "lengthChange": false,//是否允许用户自定义显示数量
+                "oLanguage": {//国际语言转化
+                    "oAria": {
+                        "sSortAscending": " - click/return to sort ascending",
+                        "sSortDescending": " - click/return to sort descending"
+                    },
+                    "sLengthMenu": "显示 _MENU_ 记录",
+                    "sZeroRecords": "对不起，查询不到任何相关数据",
+                    "sEmptyTable": "未有相关数据",
+                    "sLoadingRecords": "正在加载数据-请等待...",
+                    "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录。",
+                    "sInfoEmpty": "当前显示0到0条，共0条记录",
+                    "sInfoFiltered": "（数据库中共为 _MAX_ 条记录）",
+                    "sProcessing": "<img src='../resources/user_share/row_details/select2-spinner.gif'/> 正在加载数据...",
+                    "sSearch": "模糊查询：",
+                    "sUrl": "",
+                    //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": " 上一页 ",
+                        "sNext": " 下一页 ",
+                        "sLast": " 尾页 "
+                    }
+                },
+                "columnDefs": [
+                    {
+                        orderable: false,
+
+                        targets: 0 },
+                    {
+                        orderable: false,
+
+                        targets: 1 }
+                ],//第一列与第二列禁止排序
+{#                initComplete: function () {//列筛选#}
+{#                    var api = this.api();#}
+{#                    api.columns().indexes().flatten().each(function (i) {#}
+{#                        if (i != 0 && i != 1) {//删除第一列与第二列的筛选框#}
+{#                            var column = api.column(i);#}
+{#                            var $span = $('<span class="addselect">▾</span>').appendTo($(column.header()));#}
+{#                            var select = $('<select><option value="">All</option></select>')#}
+{#                                    .appendTo($(column.header()))#}
+{#                                    .on('click', function (evt) {#}
+{#                                        evt.stopPropagation();#}
+{#                                        var val = $.fn.dataTable.util.escapeRegex(#}
+{#                                                $(this).val()#}
+{#                                        );#}
+{#                                        column#}
+{#                                                .search(val ? '^' + val + '$' : '', true, false)#}
+{#                                                .draw();#}
+{#                                    });#}
+{#                            column.data().unique().sort().each(function (d, j) {#}
+{#                                function delHtmlTag(str) {#}
+{#                                    return str.replace(/<[^>]+>/g, "");//去掉html标签#}
+{#                                }#}
+{##}
+{#                                d = delHtmlTag(d);#}
+{#                                select.append('<option value="' + d + '">' + d + '</option>');#}
+{#                                $span.append(select)#}
+{#                            });#}
+{#                        }#}
+{#                    });#}
+{#               }#}
+
+            });
+
+           $('.toggle-vis').on('change', function (e) {
+               e.preventDefault();
+               console.log($(this).attr('data-column'));
+               var column = table.column($(this).attr('data-column'));
+               column.visible(!column.visible());
+           });
+            //设定table_data 数据样式以及格式
+            $('#table_data1').dataTable({
+                "bPaginate": false,//关闭js分页
+                "bLengthChange": false,//关闭表格宽度调整
+                "bFilter": true,//开启filter功能
+                "bSort": false,//开启排序功能
+                "bInfo": false,
+                "bAutoWidth": true
+            });
+        });
+    </script>
+{#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var test1 = document.getElementById("addform");
+                test1.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block console_name %}
+    主机管理
+{% endblock %}
+{% block extra_css %}
+            <link rel="stylesheet" href="/static/AdminLTE/plugins/select2/select2.css">
+{% endblock %}
+
+{% block ol_a_link %}
+    <li><a id="addform" data-toggle="modal" href="#add_host"><i class="fa fa-file"></i>增加主机</a></li>
+    <div id="add_host" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">添加</h4>
+                </div>
+
+                <form class="form-horizontal" method="POST"  enctype="multipart/form-data" name="form"> {% csrf_token %}
+                    <div class="modal-body">
+                        {% for field in form %}
+                            <div class="fieldWrapper">
+                                {{ field.errors }}
+                                {{ field.label_tag }}
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <input type="submit" class="btn btn-primary" value="添加" id="Save" style="margin-left:400px">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block main_content %}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+{#                <div class="box-header">#}
+{#                  <h3 class="box-title">主机列表</h3>#}
+{#                </div>#}
+            <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="table_data" class="table table-bordered table-   ">
+                        <thead>
+
+                        <tr>
+                            <th>主机名</th>
+                            <th>ip地址</th>
+                            <th>主机组</th>
+                            <th>操作</th>
+
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        {% for i in result %}
+                            <tr>
+                                <td><a href="{% url 'host_users' pk=i.id %}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ i.name }}">{{ i.name|slice:"20" }}</a></td>
+                                <td>{{ i.ip }}</td>
+                                <td>{{ i.hostgroup }}</td>
+                                <td>
+                                    <a href="{% url 'updatehost' pk=i.id %}">修改</a> &nbsp; | &nbsp;
+                                    <a href="{% url 'delhost' pk=i.id %}">删除</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+{#                <div class="box-footer clearfix">#}
+
+{#                    <ul>#}
+{#                        {% if result.has_previous %}#}
+{#                            <li><a href="?page={{ result.previous_page_number }}">上页</a></li>#}
+{#                        {% endif %}#}
+{#                        <li>#}
+{#                            <a>#}
+{#                                第{{ result.number }}页|共{{ result.paginator.num_pages }}页#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        {% if result.has_next %}#}
+{#                            <li><a href="?page={{ result.next_page_number }}">下页</a></li>#}
+{#                        {% endif %}#}
+{#                    </ul>#}
+{#                </div>#}
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+{% block end_js %}
+    <!-- jQuery 2.0.2 -->
+    <script src="/static/AdminLTE/plugins/select2/select2.full.min.js"></script>
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+            $("#table_data").dataTable({
+                "iDisplayLength":25
+
+            });
+            //设定table_data 数据样式以及格式
+            $('#table_data1').dataTable({
+                "bPaginate": true,//关闭js分页
+                "bLengthChange": false,//关闭表格宽度调整
+                "bFilter": true,//开启filter功能
+                "bSort": true,//开启排序功能
+                "bInfo": false,
+                "bAutoWidth": false
+            });
+            $(".select2").select2();
+
+        });
+    </script>
+    {#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var click_add = document.getElementById("addform");
+                click_add.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+

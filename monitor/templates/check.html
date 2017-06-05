@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block main_content %}
+<div class="row">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header">
+
+                </div>
+                <div class="box-body">
+                    <table id="table_data" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>主机名</th>
+                            <th>ip地址</th>
+                            <th>操作</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in m_server %}
+                            <tr>
+                                <td>{{ i.name }}</td>
+                                <td>{{ i.ip }}</td>
+
+                                <td>
+                                    <a href="#">查看详细信息</a> &nbsp; | &nbsp;
+                                    <a href="#">删除</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

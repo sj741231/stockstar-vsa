@@ -1,0 +1,11 @@
+<html>
+<head></head>
+<body>
+<form action="{% url 'logs:revinterface' %}" method="post"> {% csrf_token %}
+{{ form.as_p }}
+
+<input type="submit" class="btn btn-primary" value="添加" id="Save" style="margin-left:400px">
+
+</form>
+</body>
+</html>

@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{#{% load idc_tags %}#}
+{% block title %}vsystem--IDC{% endblock %}
+
+
+
+{#{% block console_name %}#}
+{#    项目管理#}
+{#{% endblock %}#}
+{% block ol_a_link %}
+    <li><a id="addform" data-toggle="modal" href="#uploadfile"><i class="fa fa-plus"></i>新增</a></li>
+
+    <div id="uploadfile" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">添加</h4>
+                </div>
+
+                <form class="form-horizontal" method="POST"  enctype="multipart/form-data" name="form"> {% csrf_token %}
+                    <div class="modal-body">
+                        {% for field in form %}
+                            <div class="fieldWrapper">
+                                {{ field.errors }}
+                                {{ field.label_tag }}{{ field }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <input type="submit" class="btn btn-primary" value="添加" id="Save" style="margin-left:400px">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block main_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+{#                <div class="box-header">#}
+{#                    <h3 class="box-title">IDC-列表</h3>#}
+{#                    <div class="box-tools">#}
+{#                        <div class="input-group">#}
+{#                            <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search">#}
+{#                            <div class="input-group-btn">#}
+{#                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+                <div class="box-body">
+                    <table id="table_data" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            {% for foo in field_meta%}
+                            <th>{{ foo.verbose_name }}</th>
+                            {% endfor %}
+
+{#                            <th>名称</th>#}
+{#                            <th>联系电话</th>#}
+{#                            <th>地址</th>#}
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in idcs.values_list %}
+
+                            <tr>
+                                {% for v in i %}
+                                <td>{{ v }}</td>
+{#                                <td>{{ i.name }}</td>#}
+{#                                <td>{{ i.tel }}</td>#}
+{#                                <td>{{ i.address }}</td>#}
+
+                                    {% endfor %}
+                            <td><a href="/idc/update_idc/{{ i|first }}">修改</a>|<a href="/idc/idc/del/{{ i|first }}">删除</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        {% endif %}
+                        <li>
+                            <a>
+                                第{{ page_obj.number }}页|共{{ page_obj.paginator.num_pages }}页
+                            </a>
+                        </li>
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block end_js %}
+
+    <script>
+        $(function() {
+            $("#example1").dataTable();
+            //设定table_data 数据样式以及格式
+            $('#table_data').dataTable({
+                "bPaginate": false,//关闭js分页
+                "bLengthChange": false,//关闭表格宽度调整
+                "bFilter": true,//开启filter功能
+                "bSort": true,//开启排序功能
+                "bInfo": false,
+                "bAutoWidth": false
+            });
+        });
+    </script>
+{#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var test1 = document.getElementById("addform");
+                test1.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+

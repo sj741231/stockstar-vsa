@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title %}
+    用户{{ user_perm.user.username }}权限
+{% endblock %}
+{% block extra_css %}
+{% endblock %}
+
+{% block ol_a_link %}
+
+{% endblock %}
+
+{% block main_content %}
+
+
+    <div class="row">
+        <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">{{ user_perm.user.username }}已授权主机</h3>
+                    </div>
+
+                    <div class="box-body">
+                        <table id="table_data" class="table table-bordered table-   ">
+                            <thead>
+                            <tr>
+                                <td></td>
+                                <th>主机名</th>
+                                <th>ip</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in user_perm.host.all %}
+                                <tr>
+                                    <td><input type="checkbox" name="host" value={{ i.id }}></td>
+                                    <td>{{ i.name }}</td>
+                                    <td>{{ i.ip }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">已授权主机组</h3>
+                    </div>
+                    <div>
+                        <table id="table_data1" class="table table-bordered table-   ">
+                            <thead>
+
+                            <tr>
+                                <td></td>
+                                <th>主机组</th>
+
+                            </tr>
+
+                            </thead>
+                            <tbody>
+                            {% for j in user_perm.hostgroup.all %}
+                                <tr>
+                                    <td><input type="checkbox" name="hostgroup" value={{ i.id }}></td>
+                                    <td>{{ j.name }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+{% block end_js %}
+    <!-- jQuery 2.0.2 -->
+{#    <script src="/static/js/googleapis/jquery.min.js"></script>#}
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+            $("#table_data").dataTable();
+            $("#table_data1").dataTable();
+
+            //设定table_data 数据样式以及格式
+{#            $('#table_data').dataTable({#}
+{#                "bPaginate": false,//关闭js分页#}
+{#                "bLengthChange": false,//关闭表格宽度调整#}
+{#                "bFilter": true,//开启filter功能#}
+{#                "bSort": true,//开启排序功能#}
+{#                "bInfo": false,#}
+{#                "bAutoWidth": false#}
+{#            });#}
+        });
+    </script>
+    {#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var click_add = document.getElementById("addform");
+                click_add.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+

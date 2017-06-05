@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}vsystem-video-{{ video.name }}{% endblock %}
+
+{% block console_name %}
+    {{ video.name }}
+{% endblock %}
+{% block extra_js %}
+    <script type="application/javascript" src="/static/jwplayer/jwplayer.js"></script>
+
+{% endblock %}
+{% block ol_a_link %}
+
+{% endblock %}
+{% block main_content %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-success box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ i.name }}</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-toggle="collapse">
+                            <i class="fa fa-minus"></i>
+
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    {% if video.protocol == "rtmp" %}
+                    <div>
+                        <div id="{{ video.id }}"></div>
+
+                        <script type='text/javascript'>
+                            jwplayer('{{ video.id }}').setup({
+                                'flashplayer': '/static/jwplayer/player.swf',
+                                'file': '{{ video.channal }}',
+                                'streamer': '{{ video.protocol }}://{{ video.address }}/live',
+                                'controlbar': 'bottom',
+                                'width': '100%',
+                                'aspectratio':'12:9',
+                                'autostart':'true'
+                            });
+                        </script>
+                    </div>
+                    {% endif %}
+                    
+                    {% if video.protocol == "http" %}
+{#                        <div>#}
+{#                        <div id="{{ video.id }}"></div>#}
+{##}
+{#                        <script type='text/javascript'>#}
+{#                            jwplayer('{{ video.id }}').setup({#}
+{#                                file: '{{ video.protocol }}://{{ video.address }}/live/{{ video.channal }}.m3u8',#}
+{#                                'autostart':'true',#}
+{#                                analytics: { enabled: false }#}
+{##}
+{#                            });#}
+{#                        </script>#}
+{#                    </div>#}
+
+
+
+                        <div class="video" id="HLSPlayer" style="width:100%;height:300px;">
+                            <script>
+                                var vID = "";
+                                var vWidth = "100%";
+                                var vHeight = "300";
+                                var vPlayer = "/static/hlsplayer/HLSPlayer.swf";
+                                var vHLSset = "/static/hlsplayer/HLS.swf";
+                                var vPic = "/static/hlsplayer/start.jpg";
+                                var vCssurl = "/static/hlsplayer/mini.css";
+                                var vHLSurl = "{{ video.protocol }}://{{ video.address }}/live/{{ video.channal.name }}.m3u8";
+                            </script>
+                            <script type="application/javascript" src="/static/hlsplayer/hls.min.js" ></script>
+
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+{% endblock %}
+
+
+
+
+
+
+

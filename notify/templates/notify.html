@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}
+短信批量通知
+{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="/static/multi-select/css/multi-select.css">
+
+{% endblock %}
+{% block extra_js %}
+
+{% endblock %}
+
+{% block ol_a_link %}
+
+{% endblock %}
+{% block main_content %}
+
+    <div class="row">
+    <div class="col-xs-6">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">批量通知</h3>
+            </div>
+            <form class="form-horizontal" method="POST"  enctype="multipart/form-data" name="form"> {% csrf_token %}
+
+                <div class="box-body">
+                    <label>用户</label>
+                    {{ form.users.errors }}
+
+                    <div class="span5">
+                        <a id="select-all" href="#">选择全部</a>
+                        /
+                        <a id="deselect-all" href="#">反选</a>
+                    </div>
+                    <select id='public-methods' multiple='multiple' name="users">
+                        {% for notifyuser in notifyusers %}
+                            <option value='{{ notifyuser.id }}'>{{ notifyuser.username }}</option>
+
+                        {% endfor %}
+
+                    </select>
+                    <label>信息</label>
+                    {{ form.message.errors }}
+
+                    <input type="text" class="form-control" name="message">
+
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+{% block end_js %}
+
+    <script src="/static/multi-select/js/jquery.multi-select.js"></script>
+    <script src="/static/js/jquery.quicksearch.js"></script>
+    <script>
+{#        $('#public-methods').multiSelect();#}
+        $('#select-all').click(function(){
+            $('#public-methods').multiSelect('select_all');
+            return false;
+        });
+        $('#deselect-all').click(function(){
+            $('#public-methods').multiSelect('deselect_all');
+            return false;
+        });
+        $('#public-methods').multiSelect({
+            selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='' style='margin-bottom:5px;width:100%;height:auto'>",
+            selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='' style='margin-bottom:5px;width:100%;height:auto'>",
+            afterInit: function(ms){
+                var that = this,
+                        $selectableSearch = that.$selectableUl.prev(),
+                        $selectionSearch = that.$selectionUl.prev(),
+                        selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)',
+                        selectionSearchString = '#'+that.$container.attr('id')+' .ms-elem-selection.ms-selected';
+
+                that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                        .on('keydown', function(e){
+                            if (e.which === 40){
+                                that.$selectableUl.focus();
+                                return false;
+                            }
+                        });
+
+                that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                        .on('keydown', function(e){
+                            if (e.which == 40){
+                                that.$selectionUl.focus();
+                                return false;
+                            }
+                        });
+            },
+            afterSelect: function(){
+                this.qs1.cache();
+                this.qs2.cache();
+            },
+            afterDeselect: function(){
+                this.qs1.cache();
+                this.qs2.cache();
+            }
+        });
+    </script>
+{% endblock %}

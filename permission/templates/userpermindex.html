@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block console_name %}
+用户授权
+{% endblock %}
+
+
+{% block ol_a_link %}
+    <li><a id="addform" data-toggle="modal" href="{% url 'permissionadd' %}"><i class="fa fa-plus"></i>增加权限</a></li>
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <table id="table_data" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>授权主机数</th>
+                            <th>操作</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for object in object_list %}
+
+                            <tr>
+                                <td>{{ object.username }}</td>
+                                <td>{{ object.userperm_set.all.count }}</td>
+                                <td>
+                                    <a href="{% url 'userpermlist' object.id %}">修改</a>
+                                    |<a href="#">删除</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+
+{% endblock %}

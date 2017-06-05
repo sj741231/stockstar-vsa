@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block title %}证金运维平台{% endblock %}
+{% block console_name %}
+    证金运维平台
+{% endblock %}
+{% block extra_js %}
+
+{% endblock %}
+{% block ol_a_link %}
+
+{% endblock %}
+
+{% block main_content %}
+
+    <div class="row">
+            <div class="col-lg-6 col-xs-6">
+                <div class="small-box bg-aqua">
+                    <div class="inner" id="user_count">
+                        <p>用户数量</p>
+                    </div>
+                    <a href="{% url 'userlist' %}">详情</a>
+                    <div class="icon">
+                        <i class="ion ion-person-stalker"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-xs-6">
+                <div class="small-box bg-aqua">
+                    <div class="inner" id="server_count">
+                        <p>主机数量</p>
+                    </div>
+                    <a href="{% url 'host' %}">详情</a>
+
+                    <div class="icon">
+                        <i class="ion ion-gear-a"></i>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-xs-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">30日用户登陆统计</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="chart">
+                            <canvas id="myChart" style="height: 230px; width: 627px;" width="627" height="230"></canvas>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+
+    </div>
+
+
+
+{% endblock %}
+
+{% block end_js %}
+    <script src="/static/AdminLTE/plugins/chartjs/Chart.js"></script>
+     <script type="application/javascript">
+        $(function () {
+            $.getJSON("/accounts/interface/user/_count", function (data) {
+                $.each(data, function (i, val) {
+                    $("#user_count").append('<h3>' + val + '</h3>');
+                    //alert(val);
+                })
+            });
+            $.getJSON("/servers/interface/hosts/_count", function (data) {
+                $.each(data, function (i, val) {
+                    $("#server_count").append('<h3>' + val + '</h3>');
+                    //alert(val);
+                })
+            });
+            var areaChartData = {
+                labels: {{ timeline|safe }},
+                //labels:['1', '5', '10', '15', '20', '25', '30'],
+                datasets: [
+                    {
+                        label: "登陆详情",
+                        fillColor: "rgba(210, 214, 222, 1)",
+                        strokeColor: "rgba(210, 214, 222, 1)",
+                        pointColor: "rgba(210, 214, 222, 1)",
+                        pointStrokeColor: "#c1c7d1",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: {{ event_count }}
+                    }
+
+                ]
+            };
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var myLineChart = new Chart(ctx).Line(areaChartData);
+            window.mychart = new Chart(ctx).Line(areaChartData, {
+                responsive : true,
+                animation: true,
+                barValueSpacing : 5,
+                barDatasetSpacing : 1,
+                tooltipFillColor: "rgba(0,0,0,0.8)",
+                multiTooltipTemplate: "<%= datasetLabel %> : <%= value %>"
+            });
+        })
+     </script>
+{% endblock %}
+

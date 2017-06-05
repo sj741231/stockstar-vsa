@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block console_name %}
+    主机{{ host.ip }}授权详情
+{% endblock %}
+{% block extra_css %}
+{% endblock %}
+
+{% block ol_a_link %}
+
+{% endblock %}
+{% block main_content %}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">主机-用户</h3>
+                </div>
+            <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="table_data" class="table table-bordered">
+                        <thead>
+
+                        <tr>
+                            <th>id</th>
+                            <th>用户名</th>
+                            <th>操作</th>
+
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        {% for i in users %}
+                            <tr>
+                                <td>{{ i.id }}</td>
+                                <td><a href="#">{{ i.username }}</a></td>
+                                <td>
+                                    <a href="#">修改</a> &nbsp; | &nbsp;
+                                    <a href="{% url 'delhostgroup' pk=i.id %}">删除</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+{% block end_js %}
+    <!-- jQuery 2.0.2 -->
+{#    <script src="/static/js/googleapis/jquery.min.js"></script>#}
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+            $("#example1").dataTable();
+            //设定table_data 数据样式以及格式
+            $('#table_data').dataTable({
+                "bPaginate": false,//关闭js分页
+                "bLengthChange": false,//关闭表格宽度调整
+                "bFilter": true,//开启filter功能
+                "bSort": true,//开启排序功能
+                "bInfo": false,
+                "bAutoWidth": false
+            });
+        });
+    </script>
+    {#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var click_add = document.getElementById("addform");
+                click_add.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}
+    用户批量授权
+{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/AdminLTE/plugins/select2/select2.css">
+
+{% endblock %}
+
+{% block console_name %}
+<a href="{% url 'userperm' %}">授权列表</a>
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header">
+                    用户批量授权
+                </div>
+                <form action="" method="post"> {% csrf_token %}
+                    <div class="box-body">
+
+                        {{ form.as_p }}
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary" id="Save" >更新</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+{% block end_js %}
+    <script src="/static/AdminLTE/plugins/select2/select2.full.min.js"></script>
+
+    <script>
+        $(function() {
+            $(".select2").select2();
+        });
+    </script>
+    {#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var click_add = document.getElementById("addform");
+                click_add.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+

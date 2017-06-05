@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+    <title>登录 | zhengjin99运维·平台</title>
+    <link rel="stylesheet" href="/static/AdminLTE/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/AdminLTE/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/AdminLTE/ionicons/ionicons.css">
+    <link rel="stylesheet" href="/static/AdminLTE/dist/css/AdminLTE.css">
+    <link rel="stylesheet" href="/static/AdminLTE/plugins/iCheck/square/blue.css">
+{#    <link rel="stylesheet" type="text/css" href="/static/bootstrap-2.3.2/css/bootstrap.css">#}
+{#    <link rel="stylesheet" type="text/css" href="/static/bootstrap-2.3.2/css/bootstrap-responsive.css">#}
+{#    <style type="text/css">#}
+{#        body {#}
+{#            padding-top: 40px;#}
+{#            padding-bottom: 40px;#}
+{#            background-color: #f5f5f5;#}
+{#        }#}
+{##}
+{#        .form-signin {#}
+{#            max-width: 300px;#}
+{#            padding: 19px 29px 29px;#}
+{#            margin: 0 auto 20px;#}
+{#            background-color: #fff;#}
+{#            border: 1px solid #e5e5e5;#}
+{#            -webkit-border-radius: 5px;#}
+{#            -moz-border-radius: 5px;#}
+{#            border-radius: 5px;#}
+{#            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);#}
+{#            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);#}
+{#            box-shadow: 0 1px 2px rgba(0,0,0,.05);#}
+{#        }#}
+{##}
+{#        .form-signin .form-signin-heading,#}
+{#        .form-signin .checkbox {#}
+{#            margin-bottom: 10px;#}
+{#        }#}
+{##}
+{#        .form-signin input[type="text"],#}
+{#        .form-signin input[type="password"] {#}
+{#            font-size: 16px;#}
+{#            height: auto;#}
+{#            margin-bottom: 15px;#}
+{#            padding: 7px 9px;#}
+{#        }#}
+{##}
+{#    </style>#}
+
+</head>
+{#<body>#}
+{#<div class="container">#}
+{#    {% if error %}#}
+{#        <p style="color: red;">你输入的用户名密码不正确！！</p>#}
+{#    {% endif %}#}
+{#    <form class="form-signin" action="" method="POST">{% csrf_token %}#}
+{#        <h3 class="form-signin-heading">zhengjin99运维·平台管理系统</h3>#}
+{#        <p><input class="input-block-level" type="text" name="username" placeholder="用户名"></p>#}
+{#        <p><input class="input-block-level" type="password" name="password" class="input-small" placeholder="密码"></p>#}
+{#        <button class="btn btn-large" type="submit">登录</button>&nbsp; &nbsp; <button class="btn btn-large" type="reset">重置</button>#}
+{#    </form>#}
+{#</div>#}
+
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <b>zhengjin99运维·平台</b>
+    </div>
+    <div class="login-box-body">
+        {% if error %}
+        <p class="login-box-msg">你输入的用户名密码不正确！！</p>
+        {% endif %}
+        <form action="" method="POST">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" name="username" placeholder="用户名">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" name="password" placeholder="密码">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs8">
+                </div>
+                <div class="col-xs-4">
+                    <button class="btn btn-primary btn-block btn-flat" type="submit">登陆</button>
+                </div>
+
+            </div>
+        </form>
+    <br>
+                        <a href="{% url 'reset_password_reset' %}">忘记密码</a><br>
+
+    </div>
+</div>
+<script src="/static/AdminLTE/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+
+<script src="/static/AdminLTE/bootstrap/js/bootstrap.js"></script>
+<script src="/static/AdminLTE/plugins/iCheck/icheck.js"></script>
+
+</body>
+
+
+</html>

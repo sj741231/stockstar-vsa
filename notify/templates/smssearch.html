@@ -1,0 +1,24 @@
+<html lang='utf-8'>
+<head>
+	<title>测试</title>
+</head>
+
+<body>
+{#  默认一次errors=false，会直接加载表单，提交后带POST参数，传回smsaduser #}
+	{% if errors %}
+		<ul>
+			{% for error in errors %}
+			<li>{{error}}</li>
+			{% endfor %}
+		</ul>
+	{%endif%}
+
+	<form action="/notify/smsaduser/" method="POST">{% csrf_token %}
+	   <p> 例如： 导入模板11.26 或者 2017/05/17 </p>
+		<p> "模板文件"名称: <input type="text" name="aduserfile"> </p> 
+		<input type="submit" value="查询">  	
+			
+	</form>
+
+</body>
+</html>

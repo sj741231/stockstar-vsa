@@ -1,0 +1,200 @@
+--- * ***  * -- Linux-2.6.32-431.el6.x86_64-x86_64-with-centos-6.5-Final
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         vsa:0x7fd8a64bde90
+- ** ---------- .> transport:   redis://localhost:6379//
+- ** ---------- .> results:     redis://localhost:6379
+- *** --- * --- .> concurrency: 10 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . SyncKey
+  . add_perm
+  . add_user
+  . addaduser
+  . backup_switch
+  . celery.backend_cleanup
+  . celery.chain
+  . celery.chord
+  . celery.chord_unlock
+  . celery.chunks
+  . celery.group
+  . celery.map
+  . celery.starmap
+  . check_monitor_host
+  . collect_ip_mac
+  . notify_user_by_sms
+  . notify_users_by_sms
+  . reboot_vm
+  . refresh_key
+  . test
+  . vsa.celery.debug_task
+
+cn=潘建武,ou=二组,ou=一中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe6\xbd\x98\xe5\xbb\xba\xe6\xad\xa6'), ('company', 'zhengjin99'), ('userPrincipalName', 'jianwu.pan@zhengjin99.com'), ('description', '56637'), ('displayName', '\xe6\xbd\x98\xe5\xbb\xba\xe6\xad\xa6'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'jianwu.pan'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe6\xbd\x98'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe5\xbb\xba\xe6\xad\xa6')] <type 'list'>
+增加用户:jianwu.pan 至组：mark11-wan-41 ----------True
+增加用户:jianwu.pan 至组：庄胜投顾-文件共享 ----------True
+cn=朱金梅,ou=二组,ou=三中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe6\x9c\xb1\xe9\x87\x91\xe6\xa2\x85'), ('company', 'zhengjin99'), ('userPrincipalName', 'jinmei.zhu@zhengjin99.com'), ('description', '56638'), ('displayName', '\xe6\x9c\xb1\xe9\x87\x91\xe6\xa2\x85'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'jinmei.zhu'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe6\x9c\xb1'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe9\x87\x91\xe6\xa2\x85')] <type 'list'>
+增加用户:jinmei.zhu 至组：mark11-lan-37 ----------True
+增加用户:jinmei.zhu 至组：庄胜投顾-文件共享 ----------True
+cn=连红艳,ou=二组,ou=三中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe8\xbf\x9e\xe7\xba\xa2\xe8\x89\xb3'), ('company', 'zhengjin99'), ('userPrincipalName', 'hongyan.lian@zhengjin99.com'), ('description', '56639'), ('displayName', '\xe8\xbf\x9e\xe7\xba\xa2\xe8\x89\xb3'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'hongyan.lian'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe8\xbf\x9e'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe7\xba\xa2\xe8\x89\xb3')] <type 'list'>
+增加用户:hongyan.lian 至组：mark11-lan-37 ----------True
+增加用户:hongyan.lian 至组：庄胜投顾-文件共享 ----------True
+cn=赵佳兴,ou=一部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe8\xb5\xb5\xe4\xbd\xb3\xe5\x85\xb4'), ('company', 'zhengjin99'), ('userPrincipalName', 'jiaxing.zhao@zhengjin99.com'), ('description', '56640'), ('displayName', '\xe8\xb5\xb5\xe4\xbd\xb3\xe5\x85\xb4'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'jiaxing.zhao'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe8\xb5\xb5'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe4\xbd\xb3\xe5\x85\xb4')] <type 'list'>
+增加用户:jiaxing.zhao 至组：mark-lan-53 ----------[2017-04-26 09:28:28,059: INFO/MainProcess] Task addaduser[cbfb01dd-d6da-4237-b4b3-2f9c93716f3c] succeeded in 2.7309813872s: None
+[2017-05-02 13:04:59,606: INFO/MainProcess] Received task: addaduser[8cbc090b-80e0-4081-bb18-ca3c28a29ae1]
+[2017-05-02 13:04:59,607: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7fd8a61c42a8> (args:(u'addaduser', u'8cbc090b-80e0-4081-bb18-ca3c28a29ae1', [u'/data/jump/vsa/upload/xls/2017/05/02/13/04/\u5bfc\u5165\u6a21\u677f11.26.xlsx'], {}, {u'utc': True, u'is_eager': False, u'chord': None, u'group': None, u'args': [u'/data/jump/vsa/upload/xls/2017/05/02/13/04/\u5bfc\u5165\u6a21\u677f11.26.xlsx'], u'retries': 0, u'delivery_info': {u'priority': 0, u'redelivered': None, u'routing_key': 'celery', u'exchange': 'celery'}, u'expires': None, u'hostname': 'celery@vsa', u'task': u'addaduser', u'callbacks': None, u'correlation_id': '8cbc090b-80e0-4081-bb18-ca3c28a29ae1', u'errbacks': None, u'timelimit': [None, None], u'taskset': None, u'kwargs': {}, u'eta': None, u'reply_to': 'd1c9cb62-431b-32e9-9d1f-e06454ac3595', u'id': u'8cbc090b-80e0-4081-bb18-ca3c28a29ae1', u'headers': {}}) kwargs:{})
+[2017-05-02 13:04:59,610: DEBUG/MainProcess] Task accepted: addaduser[8cbc090b-80e0-4081-bb18-ca3c28a29ae1] pid:1797
+ 
+ -------------- celery@vsa v3.1.19 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-2.6.32-431.el6.x86_64-x86_64-with-centos-6.5-Final
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         vsa:0x7fd8a64bde90
+- ** ---------- .> transport:   redis://localhost:6379//
+- ** ---------- .> results:     redis://localhost:6379
+- *** --- * --- .> concurrency: 10 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . SyncKey
+  . add_perm
+  . add_user
+  . addaduser
+  . backup_switch
+  . celery.backend_cleanup
+  . celery.chain
+  . celery.chord
+  . celery.chord_unlock
+  . celery.chunks
+  . celery.group
+  . celery.map
+  . celery.starmap
+  . check_monitor_host
+  . collect_ip_mac
+  . notify_user_by_sms
+  . notify_users_by_sms
+  . reboot_vm
+  . refresh_key
+  . test
+  . vsa.celery.debug_task
+
+cn=潘娜,ou=二部,ou=一中心,ou=服务发展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe6\xbd\x98\xe5\xa8\x9c'), ('company', 'zhengjin98'), ('userPrincipalName', 'nuo.pan@zhengjin99.com'), ('description', '56667'), ('displayName', '\xe6\xbd\x98\xe5\xa8\x9c'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'nuo.pan'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe6\xbd\x98'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe5\xa8\x9c')] <type 'list'>
+增加用户:nuo.pan 至组：mark-lan-53 ----------True
+cn=鲍文婧,ou=三部,ou=一中心,ou=服务发展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe9\xb2\x8d\xe6\x96\x87\xe5\xa9\xa7'), ('company', 'zhengjin99'), ('userPrincipalName', 'wenjing.bao@zhengjin99.com'), ('description', '56668'), ('displayName', '\xe9\xb2\x8d\xe6\x96\x87\xe5\xa9\xa7'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'wenjing.bao'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe9\xb2\x8d'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe6\x96\x87\xe5\xa9\xa7')] <type 'list'>
+增加用户:wenjing.bao 至组：mark-lan-53 ----------True
+cn=刘清源,ou=三部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe5\x88\x98\xe6\xb8\x85\xe6\xba\x90'), ('company', 'zhengjin99'), ('userPrincipalName', 'qingyuan.liu@zhengjin99.com'), ('description', '56666'), ('displayName', '\xe5\x88\x98\xe6\xb8\x85\xe6\xba\x90'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'qingyuan.liu'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe5\x88\x98'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe6\xb8\x85\xe6\xba\x90')] <type 'list'>
+增加用户:qingyuan.liu 至组：mark-lan-53 ----------True
+cn=董洋,ou=三部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe8\x91\xa3\xe6\xb4\x8b'), ('company', 'zhengjin99'), ('userPrincipalName', 'yang.dong@zhengjin99.com'), ('description', '56648'), ('displayName', '\xe8\x91\xa3\xe6\xb4\x8b'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'yang.dong'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe8\x91\xa3'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe6\xb4\x8b')] <type 'list'>
+增加用户:yang.dong 至组：mark-lan-53 ----------True
+cn=邹鹏,ou=四部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe9\x82\xb9\xe9\xb9\x8f'), ('company', 'zhengjin99'), ('userPrincipalName', 'peng.zou@zhengjin99.com'), ('description', '56650'), ('displayName', '\xe9\x82\xb9\xe9\xb9\x8f'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'peng.zou'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe9\x82\xb9'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe9\xb9\x8f')] <type 'list'>
+增加用户:peng.zou 至组：mark-lan-53 ----------True
+cn=陈贤儒,ou=四部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe9\x99\x88\xe8\xb4\xa4\xe5\x84\x92'), ('company', 'zhengjin99'), ('userPrincipalName', 'xianru.chen@zhengjin99.com'), ('description', '56651'), ('displayName', '\xe9\x99\x88\xe8\xb4\xa4\xe5\x84\x92'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'xianru.chen'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe9\x99\x88'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe8\xb4\xa4\xe5\x84\x92')] <type 'list'>
+增加用户:xianru.chen 至组：mark-lan-53 ----------True
+cn=孙佳,ou=五部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe5\xad\x99\xe4\xbd\xb3'), ('company', 'zhengjin99'), ('userPrincipalName', 'jia.sun@zhengjin99.com'), ('description', '56652'), ('displayName', '\xe5\xad\x99\xe4\xbd\xb3'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'jia.sun'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe5\xad\x99'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe4\xbd\xb3')] <type 'list'>
+增加用户:jia.sun 至组：mark-lan-53 ----------True
+cn=王玉东,ou=五部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe7\x8e\x8b\xe7\x8e\x89\xe4\xb8\x9c'), ('company', 'zhengjin99'), ('userPrincipalName', 'yudong.wang@zhengjin99.com'), ('description', '56653'), ('displayName', '\xe7\x8e\x8b\xe7\x8e\x89\xe4\xb8\x9c'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'yudong.wang'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe7\x8e\x8b'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe7\x8e\x89\xe4\xb8\x9c')] <type 'list'>
+增加用户:yudong.wang 至组：mark-lan-53 ----------True
+cn=倪云鹤,ou=一组,ou=四中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe5\x80\xaa\xe4\xba\x91\xe9\xb9\xa4'), ('company', 'zhengjin99'), ('userPrincipalName', 'yunhe.ni@zhengjin99.com'), ('description', '56656'), ('displayName', '\xe5\x80\xaa\xe4\xba\x91\xe9\xb9\xa4'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'yunhe.ni'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe5\x80\xaa'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe4\xba\x91\xe9\xb9\xa4')] <type 'list'>
+增加用户:yunhe.ni 至组：mark11-lan-36 ----------True
+增加用户:yunhe.ni 至组：庄胜投顾-文件共享 ----------True
+cn=王良,ou=五组,ou=四中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe7\x8e\x8b\xe8\x89\xaf'), ('company', 'zhengjin99'), ('userPrincipalName', 'liang.wang01@zhengjin99.com'), ('description', '56657'), ('displayName', '\xe7\x8e\x8b\xe8\x89\xaf'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'liang.wang01'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe7\x8e\x8b'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe8\x89\xaf')] <type 'list'>
+增加用户:liang.wang01 至组：mark11-lan-36 ----------True
+增加用户:liang.wang01 至组：庄胜投顾-文件共享 ----------True
+cn=孙鑫,ou=四组,ou=五中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe5\xad\x99\xe9\x91\xab'), ('company', 'zhengjin99'), ('userPrincipalName', 'xin.sun@zhengjin99.com'), ('description', '56658'), ('displayName', '\xe5\xad\x99\xe9\x91\xab'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'xin.sun'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe5\xad\x99'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe9\x91\xab')] <type 'list'>
+增加用户:xin.sun 至组：mark11-lan-36 ----------True
+增加用户:xin.sun 至组：庄胜投顾-文件共享 ----------True
+cn=李鹏,ou=四组,ou=四中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe6\x9d\x8e\xe9\xb9\x8f'), ('company', 'zhengjin99'), ('userPrincipalName', 'peng.li01@zhengjin99.com'), ('description', '56659'), ('displayName', '\xe6\x9d\x8e\xe9\xb9\x8f'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'peng.li01'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe6\x9d\x8e'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe9\xb9\x8f')] <type 'list'>
+增加用户:peng.li01 至组：mark11-lan-36 ----------True
+增加用户:peng.li01 至组：庄胜投顾-文件共享 ----------True
+cn=蒋春生,ou=二组,ou=四中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe8\x92\x8b\xe6\x98\xa5\xe7\x94\x9f'), ('company', 'zhengjin99'), ('userPrincipalName', 'chunsheng.jiang@zhengjin99.com'), ('description', '56660'), ('displayName', '\xe8\x92\x8b\xe6\x98\xa5\xe7\x94\x9f'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'chunsheng.jiang'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe8\x92\x8b'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe6\x98\xa5\xe7\x94\x9f')] <type 'list'>
+增加用户:chunsheng.jiang 至组：mark11-lan-36 ----------True
+增加用户:chunsheng.jiang 至组：庄胜投顾-文件共享 ----------True
+cn=丁世旭,ou=一组,ou=四中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe4\xb8\x81\xe4\xb8\x96\xe6\x97\xad'), ('company', 'zhengjin99'), ('userPrincipalName', 'shixu.ding@zhengjin99.com'), ('description', '56661'), ('displayName', '\xe4\xb8\x81\xe4\xb8\x96\xe6\x97\xad'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'shixu.ding'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe4\xb8\x81'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe4\xb8\x96\xe6\x97\xad')] <type 'list'>
+增加用户:shixu.ding 至组：mark11-lan-36 ----------True
+增加用户:shixu.ding 至组：庄胜投顾-文件共享 ----------True
+cn=张兵兵,ou=二组,ou=四中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe5\xbc\xa0\xe5\x85\xb5\xe5\x85\xb5'), ('company', 'zhengjin99'), ('userPrincipalName', 'bingbing.zhang@zhengjin99.com'), ('description', '56662'), ('displayName', '\xe5\xbc\xa0\xe5\x85\xb5\xe5\x85\xb5'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'bingbing.zhang'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe5\xbc\xa0'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe5\x85\xb5\xe5\x85\xb5')] <type 'list'>
+增加用户:bingbing.zhang 至组：mark11-lan-36 ----------True
+增加用户:bingbing.zhang 至组：庄胜投顾-文件共享 ----------True
+cn=李柏延,ou=四组,ou=四中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe6\x9d\x8e\xe6\x9f\x8f\xe5\xbb\xb6'), ('company', 'zhengjin99'), ('userPrincipalName', 'baiyan.li@zhengjin99.com'), ('description', '56663'), ('displayName', '\xe6\x9d\x8e\xe6\x9f\x8f\xe5\xbb\xb6'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'baiyan.li'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe6\x9d\x8e'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe6\x9f\x8f\xe5\xbb\xb6')] <type 'list'>
+增加用户:baiyan.li 至组：mark11-lan-36 ----------True
+增加用户:baiyan.li 至组：庄胜投顾-文件共享 ----------True
+cn=李东博,ou=二组,ou=三中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe6\x9d\x8e\xe4\xb8\x9c\xe5\x8d\x9a'), ('company', 'zhengjin99'), ('userPrincipalName', 'dongbo.li@zhengjin99.com'), ('description', '56664'), ('displayName', '\xe6\x9d\x8e\xe4\xb8\x9c\xe5\x8d\x9a'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'dongbo.li'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe6\x9d\x8e'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe4\xb8\x9c\xe5\x8d\x9a')] <type 'list'>
+增加用户:dongbo.li 至组：mark11-lan-37 ----------True
+增加用户:dongbo.li 至组：庄胜投顾-文件共享 ----------True
+cn=林俊杰,ou=五组,ou=四中心,ou=投顾市场二分部,ou=投顾事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe6\x9e\x97\xe4\xbf\x8a\xe6\x9d\xb0'), ('company', 'zhengjin99'), ('userPrincipalName', 'junjie.lin@zhengjin99.com'), ('description', '56665'), ('displayName', '\xe6\x9e\x97\xe4\xbf\x8a\xe6\x9d\xb0'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'junjie.lin'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe6\x9e\x97'), ('department', '\xe6\x8a\x95\xe9\xa1\xbe-\xe5\xb8\x82\xe5\x9c\xba'), ('givenName', '\xe4\xbf\x8a\xe6\x9d\xb0')] <type 'list'>
+增加用户:junjie.lin 至组：mark11-lan-36 ----------True
+增加用户:junjie.lin 至组：庄胜投顾-文件共享 ----------True
+cn=马栋,ou=四部,ou=深圳中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe9\xa9\xac\xe6\xa0\x8b'), ('company', 'zhengjin99'), ('userPrincipalName', 'dong.ma@zhengjin99.com'), ('description', '56654'), ('displayName', '\xe9\xa9\xac\xe6\xa0\x8b'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'dong.ma'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe9\xa9\xac'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe6\xa0\x8b')] <type 'list'>
+增加用户:dong.ma 至组：深圳市场部-LAN-63 ----------True
+cn=任立果,ou=二部,ou=深圳中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe4\xbb\xbb\xe7\xab\x8b\xe6\x9e\x9c'), ('company', 'zhengjin99'), ('userPrincipalName', 'liguo.ren@zhengjin99.com'), ('description', '56655'), ('displayName', '\xe4\xbb\xbb\xe7\xab\x8b\xe6\x9e\x9c'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'liguo.ren'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe4\xbb\xbb'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe7\xab\x8b\xe6\x9e\x9c')] <type 'list'>
+增加用户:liguo.ren 至组：深圳市场部-LAN-63 ----------True
+该部门已经存在用户：董洋！
+用户名称变为：董洋01
+cn=董洋01,ou=三部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe8\x91\xa3\xe6\xb4\x8b01'), ('company', 'zhengjin99'), ('userPrincipalName', 'yang.dong01@zhengjin99.com'), ('description', '56648'), ('displayName', '\xe8\x91\xa3\xe6\xb4\x8b01'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'yang.dong01'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe8\x91\xa3'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe6\xb4\x8b01')] <type 'list'>
+增加用户:yang.dong01 至组：mark-lan-53 ----------True
+cn=张耀华,ou=三部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe5\xbc\xa0\xe8\x80\x80\xe5\x8d\x8e'), ('company', 'zhengjin99'), ('userPrincipalName', 'yaohua.zhang@zhengjin99.com'), ('description', '56649'), ('displayName', '\xe5\xbc\xa0\xe8\x80\x80\xe5\x8d\x8e'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'yaohua.zhang'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe5\xbc\xa0'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe8\x80\x80\xe5\x8d\x8e')] <type 'list'>
+增加用户:yaohua.zhang 至组：mark-lan-53 ----------True
+该部门已经存在用户：邹鹏！
+用户名称变为：邹鹏01
+cn=邹鹏01,ou=四部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe9\x82\xb9\xe9\xb9\x8f01'), ('company', 'zhengjin99'), ('userPrincipalName', 'peng.zou01@zhengjin99.com'), ('description', '56650'), ('displayName', '\xe9\x82\xb9\xe9\xb9\x8f01'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'peng.zou01'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe9\x82\xb9'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe9\xb9\x8f01')] <type 'list'>
+增加用户:peng.zou01 至组：mark-lan-53 ----------True
+该部门已经存在用户：陈贤儒！
+用户名称变为：陈贤儒01
+cn=陈贤儒01,ou=四部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe9\x99\x88\xe8\xb4\xa4\xe5\x84\x9201'), ('company', 'zhengjin99'), ('userPrincipalName', 'xianru.chen01@zhengjin99.com'), ('description', '56651'), ('displayName', '\xe9\x99\x88\xe8\xb4\xa4\xe5\x84\x9201'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'xianru.chen01'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe9\x99\x88'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe8\xb4\xa4\xe5\x84\x9201')] <type 'list'>
+增加用户:xianru.chen01 至组：mark-lan-53 ----------True
+该部门已经存在用户：孙佳！
+用户名称变为：孙佳01
+cn=孙佳01,ou=五部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe5\xad\x99\xe4\xbd\xb301'), ('company', 'zhengjin99'), ('userPrincipalName', 'jia.sun01@zhengjin99.com'), ('description', '56652'), ('displayName', '\xe5\xad\x99\xe4\xbd\xb301'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'jia.sun01'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00$\x00E\x00R\x00"\x00'), ('sn', '\xe5\xad\x99'), ('department', 'TD\xe5\xb8\x82\xe5\x9c\xba\xe9\x83\xa8'), ('givenName', '\xe4\xbd\xb301')] <type 'list'>
+增加用户:jia.sun01 至组：mark-lan-53 ----------True
+该部门已经存在用户：王玉东！
+用户名称变为：王玉东01
+cn=王玉东01,ou=五部,ou=三中心,ou=市场拓展中心,ou=TD事业部,ou=证金财富,dc=zhengjin99,dc=com
+[('cn', '\xe7\x8e\x8b\xe7\x8e\x89\xe4\xb8\x9c01'), ('company', 'zhengjin99'), ('userPrincipalName', 'yudong.wang01@zhengjin99.com'), ('description', '56653'), ('displayName', '\xe7\x8e\x8b\xe7\x8e\x89\xe4\xb8\x9c01'), ('objectclass', ['top', 'person', 'organizationalPerson', 'user']), ('userAccountControl', '66080'), ('sAMAccountName', 'yudong.wang01'), ('unicodePwd', '"\x003\x004\x00e\x00r\x00#\x00[2017-05-02 13:05:08,208: INFO/MainProcess] Task addaduser[8cbc090b-80e0-4081-bb18-ca3c28a29ae1] succeeded in 8.6006988436s: None
+[2017-05-02 13:27:32,844: INFO/MainProcess] Received task: add_user[6fdb5e7c-303f-4579-9df8-40d8bb9d78be]
+[2017-05-02 13:27:32,844: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7fd8a61c42a8> (args:(u'add_user', u'6fdb5e7c-303f-4579-9df8-40d8bb9d78be', [u'jin.shi', u'jin.shi@zhengjin99.com'], {}, {u'utc': True, u'is_eager': False, u'chord': None, u'group': None, u'args': [u'jin.shi', u'jin.shi@zhengjin99.com'], u'retries': 0, u'delivery_info': {u'priority': 0, u'redelivered': None, u'routing_key': 'celery', u'exchange': 'celery'}, u'expires': None, u'hostname': 'celery@vsa', u'task': u'add_user', u'callbacks': None, u'correlation_id': '6fdb5e7c-303f-4579-9df8-40d8bb9d78be', u'errbacks': None, u'timelimit': [None, None], u'taskset': None, u'kwargs': {}, u'eta': None, u'reply_to': 'f0445ae1-0655-3f06-ab6c-b2ef102bbef7', u'id': u'6fdb5e7c-303f-4579-9df8-40d8bb9d78be', u'headers': {}}) kwargs:{})
+[2017-05-02 13:27:32,846: DEBUG/MainProcess] Task accepted: add_user[6fdb5e7c-303f-4579-9df8-40d8bb9d78be] pid:1802
+[2017-05-02 13:27:34,669: INFO/MainProcess] Task add_user[6fdb5e7c-303f-4579-9df8-40d8bb9d78be] succeeded in 1.82347677276s: None
+[2017-05-02 13:27:56,175: INFO/MainProcess] Received task: add_perm[2a9a9fd2-9f82-4015-aba7-14ac6d9dbc75]
+[2017-05-02 13:27:56,175: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7fd8a61c42a8> (args:(u'add_perm', u'2a9a9fd2-9f82-4015-aba7-14ac6d9dbc75', [], {u'username': u'jin.shi', u'ip': u'10.99.12.80'}, {u'utc': True, u'is_eager': False, u'chord': None, u'group': None, u'args': [], u'retries': 0, u'delivery_info': {u'priority': 0, u'redelivered': None, u'routing_key': 'celery', u'exchange': 'celery'}, u'expires': None, u'hostname': 'celery@vsa', u'task': u'add_perm', u'callbacks': None, u'correlation_id': '2a9a9fd2-9f82-4015-aba7-14ac6d9dbc75', u'errbacks': None, u'timelimit': [600, None], u'taskset': None, u'kwargs': {u'username': u'jin.shi', u'ip': u'10.99.12.80'}, u'eta': None, u'reply_to': '60d20325-9722-3dbc-8c39-a8c38893a880', u'id': u'2a9a9fd2-9f82-4015-aba7-14ac6d9dbc75', u'headers': {}}) kwargs:{})
+[2017-05-02 13:27:56,178: DEBUG/MainProcess] Task accepted: add_perm[2a9a9fd2-9f82-4015-aba7-14ac6d9dbc75] pid:1806
+[2017-05-02 13:27:56,178: INFO/MainProcess] Received task: add_perm[516f2ccd-4948-4ab7-bbd9-27b01b0ee186]
+[2017-05-02 13:27:56,178: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7fd8a61c42a8> (args:(u'add_perm', u'516f2ccd-4948-4ab7-bbd9-27b01b0ee186', [], {u'username': u'jin.shi', u'ip': u'10.99.12.92'}, {u'utc': True, u'is_eager': False, u'chord': None, u'group': None, u'args': [], u'retries': 0, u'delivery_info': {u'priority': 0, u'redelivered': None, u'routing_key': 'celery', u'exchange': 'celery'}, u'expires': None, u'hostname': 'celery@vsa', u'task': u'add_perm', u'callbacks': None, u'correlation_id': '516f2ccd-4948-4ab7-bbd9-27b01b0ee186', u'errbacks': None, u'timelimit': [600, None], u'taskset': None, u'kwargs': {u'username': u'jin.shi', u'ip': u'10.99.12.92'}, u'eta': None, u'reply_to': '60d20325-9722-3dbc-8c39-a8c38893a880', u'id': u'516f2ccd-4948-4ab7-bbd9-27b01b0ee186', u'headers': {}}) kwargs:{})
+[2017-05-02 13:27:56,181: DEBUG/MainProcess] Task accepted: add_perm[516f2ccd-4948-4ab7-bbd9-27b01b0ee186] pid:1800
+[2017-05-02 13:27:56,961: INFO/MainProcess] Task add_perm[2a9a9fd2-9f82-4015-aba7-14ac6d9dbc75] succeeded in 0.785074971616s: [{'dark': {u'10.99.12.80': {'msg': 'FAILED: [Errno None] Unable to connect to port 22022 on  or 10.99.12.80', 'failed':...
+[2017-05-02 13:27:59,198: INFO/MainProcess] Task add_perm[516f2ccd-4948-4ab7-bbd9-27b01b0ee186] succeeded in 3.01874609664s: [{'dark': {}, 'contacted': {u'10.99.12.92': {'comment': u'', 'createhome': True, 'group': 510, 'uid': 510, 'changed': True,...

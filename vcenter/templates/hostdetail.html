@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+{% load jsonfilters %}
+{% block title %}zhengjin99运维·平台--{{ object.name }}{% endblock %}
+
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block console_name %}
+{% endblock %}
+{% block ol_a_link %}
+
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">物理机:{{ object.name }}</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th>配置</th>
+                                <th>参数</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>处理器</td>
+                                <td>{{ object.cpu }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>内存</td>
+                                <td>{{ object.memory|filesizeformat }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>网卡地址</td>
+                                <td>{{ object.ip }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>操作系统</td>
+                                <td>{{ object.system }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>磁盘</td>
+                                <td>
+                                    {% for i in object.disk|jsonify %}
+                                        <p>
+                                        {% for k,v in i.items %}
+                                            {{ k }}:{{ v|filesizeformat }}
+                                            {% endfor %}
+                                        </p>
+                                    {% endfor %}
+{#                                    {{ object.disk }}#}
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>所在数据中心</td>
+                                <td>{{ object.servercontainer }}</td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- /box-body -->
+
+            </div>
+            <!-- /box -->
+
+        </div>
+
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">所有虚拟机</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table id="table_data" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>虚拟机名</th>
+                            <th>cpu</th>
+                            <th>内存</th>
+                            <th>ip</th>
+                            <th>操作系统</th>
+                            <th>标签</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in object.virtualhost_set.all %}
+
+                            <tr>
+                                <td><a href="{{ i.get_absolute_url }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ i.name }}">{{ i.name|slice:"20" }}</a></td>
+
+                                <td>{{ i.cpu }}</td>
+                                <td>{% widthratio i.memory 1024 1 %}G</td>
+                                <td>{{ i.ip }}</td>
+                                <td>{% if 'windows' in i.system|lower  %}
+                                    <i class="fa fa-windows"></i>
+                                {% elif 'linux' in i.system|lower %}
+                                    <i class="fa fa-linux"></i>
+                                {% elif 'centos' in i.system|lower %}
+                                    <i class="fa fa-linux"></i>
+                                {% else %}
+                                    {{ i.system }}
+                                {% endif %}</td>
+                                <td>
+
+                                    {% if i.tag %}
+
+                                        {% for tag in i.tag|jsonify  %}
+                                            {% for k,v in tag.items %}
+                                                {{ k }}:{{ v }} &nbsp;&nbsp;
+
+                                            {% endfor %}
+
+                                        {% endfor %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /box-body -->
+
+            </div>
+            <!-- /box -->
+
+        </div>
+
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+{% endblock %}
+
+{% block end_js %}
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+
+            //设定table_data 数据样式以及格式
+            {#            $('#table_data').dataTable({#}
+            {#                "bPaginate": false,//关闭js分页#}
+            {#                "bLengthChange": false,//关闭表格宽度调整#}
+            {#                "bFilter": true,//开启filter功能#}
+            {#                "bSort": true,//开启排序功能#}
+{#                "bInfo": false,#}
+{#                "bAutoWidth": true#}
+{#            });#}
+        });
+    </script>
+{#    表单验证失败弹出表单#}
+
+{% endblock %}
+
+
+
+
+
+

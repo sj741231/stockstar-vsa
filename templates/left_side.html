@@ -1,0 +1,254 @@
+<!--左侧菜单-->
+<section class="sidebar">
+
+    <ul class="sidebar-menu">
+        {% if request.user.is_superuser %}
+        <li class="treeview" id="accounts">
+            <a href="{% url 'userlist' %}">
+                <i class="fa fa-users"></i>
+                <span>账户管理</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{% url 'usergrouplist' %}"><i class="fa fa-circle-o"></i>用户组管理</a></li>
+                <li><a href="{% url 'userlist' %}"><i class="fa fa-circle-o"></i><span>用户管理</span></a></li>
+            </ul>
+
+        </li>
+            <li id="permission">
+                <a href="#">
+                    <i class="fa fa-expeditedssl"></i>
+                    <span>授权管理</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{% url 'perm' %}"><i class="fa fa-circle-o"></i>授权列表</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'multadd' %}"><i class="fa fa-circle-o"></i><span>批量授权</span></a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li class="treeview" id="servers">
+                <a href="#">
+                    <i class="fa fa-server"></i>
+                    <span>主机管理</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{% url 'host' %}"><i class="fa fa-circle-o"></i>主机管理</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'hostgroup' %}"><i class="fa fa-circle-o"></i><span>组管理</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'event' %}"><i class="fa fa-circle-o"></i><span>登陆日志</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="treeview" id="admanage">
+                <a href="#">
+                    <i class="fa fa-odnoklassniki"></i>
+                    <span>AD用户管理</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{% url 'admanage:grouprelation' %}"><i class="fa fa-circle-o"></i>架构模板管理</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'admanage:aduserfile' %}"><i class="fa fa-circle-o"></i><span>入职用户导入</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'admanage:add_log' %}"><i class="fa fa-circle-o"></i><span>用户导入记录</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'admanage:custom_result' %}"><i class="fa fa-circle-o"></i><span>结果定制</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="treeview" id="bind">
+                <a href="#">
+                    <i class="fa fa-globe"></i>
+                    <span>DNS管理</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{% url 'bind:domainlist' %}"><i class="fa fa-circle-o"></i>域名列表</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview" id="quicklink">
+                <a href="#">
+                    <i class="fa fa-th-list"></i>
+
+                        <span>常用链接</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+
+                </a>
+                <ul class="treeview-menu" id="q_m">
+
+                    <li>
+                        <a href="{% url 'quicklink' %}">
+                            <i class="fa fa-gears"></i>
+                            <span>管理</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+            <!--live-->
+
+            <li class="treeview" id="live">
+                <a href="#">
+                    <i class="fa fa-video-camera"></i>
+
+                        <span>视频直播</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+
+                </a>
+                <ul class="treeview-menu" id="q_m">
+
+                    <li>
+                        <a href="{% url 'live:channallist' %}">
+                            <i class="fa fa-gears"></i>
+                            <span>频道管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'live:nodelist' %}">
+                            <i class="fa fa-circle-o"></i>
+                            <span>节点管理</span>
+                        </a>
+                    </li>
+                        <li>
+                        <a href="{% url 'live:player' %}">
+                            <i class="fa fa-eye"></i>
+                            <span>播放器</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+
+
+            <li class="treeview" id="idc">
+                <a href="#">
+                    <i class="fa fa-building"></i>
+
+                    <span>IDC</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{% url 'idc:idclist' %}"><i class="fa fa-circle-o"></i><span>IDC管理</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'idc:rackslist' %}"><i class="fa fa-circle-o"></i><span>机柜信息</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview" id="vcenter">
+                <a href="#">
+                    <i class="fa fa-sitemap"></i>
+
+                    <span>ESXI群集</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+
+                </a>
+                <ul class="treeview-menu" id="datacenter">
+                    <li>
+                        <a href="{% url 'vcenter:index' %}">
+                            <i class="fa fa-circle-o"></i>信息统计
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+{% comment %}
+            <li class="treeview" id="monitor">
+                <a href="#">
+                    <i class="fa fa-television"></i>
+                    <span>统一监控</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu" id="monitor">
+                    <li>
+                        <a href="{% url 'monitor:monitorlist' %}">
+                            <i class="fa fa-desktop"></i>监控服务器
+                        </a>
+                        <a href="{% url 'monitor:monitorlist' %}">
+                            <i class="fa fa-desktop"></i>主机监控详情
+                        </a>
+                    </li>
+                </ul>
+            </li>
+{% endcomment %} 
+            <li>
+                <a href="{% url 'logs:maclog' %}">
+                    <i class="fa fa-circle-o"></i>
+                    <span>认证记录</span>
+                    <span class="label label-primary pull-right">{{ count.maccount }}</span>
+                </a>
+            </li>
+            <li class="treeview" id="notify">
+                <a href="#">
+                    <i class="fa fa-envelope"></i>
+                    <span>通知</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{% url 'notify:notifyusers' %}"><i class="fa fa-circle-o"></i>用户管理</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'notify:notify' %}"><i class="fa fa-circle-o"></i><span>批量通知</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'notify:notifylog' %}"><i class="fa fa-circle-o"></i><span>通知记录</span></a>
+                    </li>
+                </ul>
+            </li>
+        {% endif %}
+    </ul>
+    {% block sidebar-left %}{% endblock %}
+</section>
+<!--左侧菜单-->
+
+<script type="application/javascript">
+
+    $(function() {
+
+        $.getJSON("/quicklink/interface/list", function (data) {
+            $.each(data, function (i, val) {
+                $("#q_m").append('<li><a href="'+val.link+'" target="_blank"> <i class="fa fa-circle-o"></i><span>'+ val.name +'</span></a></li>');
+            });
+
+        });
+            $.getJSON("/vcenter/interface/list", function (data) {
+            $.each(data, function (i, val) {
+                $("#datacenter").append('<li><a href="/vcenter/datacenter/'+val.id+'"> <i class="fa fa-building"></i><span>'+ val.name +'</span><span class="label label-primary pull-right">'+val.vmcount+'</span></a></li>');
+
+            });
+
+        });
+
+
+    });
+</script>

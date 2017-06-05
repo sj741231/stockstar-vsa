@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+'''
+shijin 
+'''
+from collections import namedtuple
+import xlrd, sys
+
+
+def load_excel(file):
+    open_file=xlrd.open_workbook(file)
+    sheets=open_file.sheet_names()
+    print sheets
+
+    print ','.join(sheets)
+    
+    #print len(sheets)
+
+    return open_file
+
+  
+#print ','.join(sheets)
+
+def load_context(tables1):
+    table1 = tables1.sheets()[0] 
+    nrows1 = table1.nrows
+    
+    for i in range(nrows1):
+        n = table1.row_values(i)
+        for j in n:
+            print j
+        
+        
+        
+    
+    
+    
+
+file1=load_excel(sys.argv[1])
+
+load_context(file1)
+
+
+if  __name__  == "__main__":
+    print "this is use_excel test !"
+    print "argv: ",sys.argv[1]
+    #load_excel(sys.argv[1])

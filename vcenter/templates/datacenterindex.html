@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block title %}
+    数据中心
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+
+        <div class="col-xs-12">
+            <div class="col-xs-4">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="fa fa-building"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">数据中心</span>
+                        <span class="info-box-number">{{ clusters.count }}</span>
+                        <a href="#">查看详情</a>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <div class="col-xs-4">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="fa fa-server"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">物理服务器</span>
+                        <span class="info-box-number">{{ hosts.count }}</span>
+                        <a href="{% url 'vcenter:serverlist' %}">查看详情</a>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <div class="col-xs-4">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="fa fa-cloud"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">虚拟服务器</span>
+                        <span class="info-box-number">{{ vms.count }}</span>
+                        <a href="{% url 'vcenter:vmlist' %}">查看详情</a>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+
+        </div>
+        <div class="col-xs-12">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                30天内虚拟机数量统计
+            </div>
+            <div class="box-body">
+                <div class="chart">
+                    <canvas id="barChart" style="height: 300px; width: auto;" width="300"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+
+{% block end_js %}
+    <script src="/static/AdminLTE/plugins/chartjs/Chart.js"></script>
+
+    <script>
+        $(function(){
+            //-------------
+            //- BAR CHART -
+            //-------------
+            var areaChartData = {
+                labels: {{ time_line|safe }},
+                datasets: [
+                    {
+                        label: "虚拟机",
+                        fillColor: "rgba(10, 214, 222, 1)",
+                        strokeColor: "rgba(10, 214, 222, 1)",
+                        data: {{ vm_count_by_time }}
+                    }
+
+                ]
+            };
+
+
+            var barChartCanvas = $("#barChart").get(0).getContext("2d");
+            var barChart = new Chart(barChartCanvas);
+            var barChartData = areaChartData;
+            var barChartOptions = {
+                //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+                scaleBeginAtZero: true,
+                //Boolean - Whether grid lines are shown across the chart
+                scaleShowGridLines: true,
+                //String - Colour of the grid lines
+                scaleGridLineColor: "rgba(0,0,0,.05)",
+                //Number - Width of the grid lines
+                scaleGridLineWidth: 1,
+                //Boolean - Whether to show horizontal lines (except X axis)
+                scaleShowHorizontalLines: true,
+                //Boolean - Whether to show vertical lines (except Y axis)
+                scaleShowVerticalLines: true,
+                //Boolean - If there is a stroke on each bar
+                barShowStroke: true,
+                //Number - Pixel width of the bar stroke
+                barStrokeWidth: 2,
+                //Number - Spacing between each of the X value sets
+                barValueSpacing: 5,
+                //Number - Spacing between data sets within X values
+                barDatasetSpacing: 1,
+                //String - A legend template
+                //Boolean - whether to make the chart responsive
+                responsive: true,
+                maintainAspectRatio: true
+            };
+
+            barChartOptions.datasetFill = false;
+            barChart.Bar(barChartData, barChartOptions);
+        })
+    </script>
+{% endblock %}

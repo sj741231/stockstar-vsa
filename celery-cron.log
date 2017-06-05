@@ -1,0 +1,607 @@
+Usage: celery beat [options] 
+
+celery: error: no such option: --autoreload
+[2016-10-11 15:10:20,212: DEBUG/MainProcess] Setting default socket timeout to 30
+[2016-10-11 15:10:20,212: INFO/MainProcess] beat: Starting...
+[2016-10-11 15:10:20,342: ERROR/MainProcess] Removing corrupted schedule file 'celerybeat-schedule': error('Bad magic number',)
+Traceback (most recent call last):
+  File "/data/jump/env/lib/python2.7/site-packages/celery/beat.py", line 376, in setup_schedule
+    self._store = self._open_schedule()
+  File "/data/jump/env/lib/python2.7/site-packages/celery/beat.py", line 366, in _open_schedule
+    return self.persistence.open(self.schedule_filename, writeback=True)
+  File "/usr/local/python/lib/python2.7/shelve.py", line 243, in open
+    return DbfilenameShelf(filename, flag, protocol, writeback)
+  File "/usr/local/python/lib/python2.7/shelve.py", line 227, in __init__
+    Shelf.__init__(self, anydbm.open(filename, flag), protocol, writeback)
+  File "/usr/local/python/lib/python2.7/anydbm.py", line 85, in open
+    return mod.open(file, flag, mode)
+error: Bad magic number
+[2016-10-11 15:10:20,395: DEBUG/MainProcess] Current schedule:
+<Entry: every-60-min-update-job-status collect_ip_mac(10) <freq: 1.00 hour>
+[2016-10-11 15:10:20,395: DEBUG/MainProcess] beat: Ticking with max interval->5.00 minutes
+[2016-10-11 15:10:20,409: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 15:15:20,432: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 15:15:20,433: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 15:20:20,472: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 15:20:20,473: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+celery beat v3.1.23 (Cipater) is starting.
+__    -    ... __   -        _
+Configuration ->
+    . broker -> redis://localhost:6379//
+    . loader -> celery.loaders.app.AppLoader
+    . scheduler -> celery.beat.PersistentScheduler
+    . db -> celerybeat-schedule
+    . logfile -> [stderr]@%DEBUG
+    . maxinterval -> now (0s)
+[2016-10-11 15:25:22,682: DEBUG/MainProcess] Setting default socket timeout to 30
+[2016-10-11 15:25:22,682: INFO/MainProcess] beat: Starting...
+[2016-10-11 15:25:22,689: DEBUG/MainProcess] Current schedule:
+<Entry: every-60-min-update-job-status collect_ip_mac(10) <freq: 1.00 minute>
+[2016-10-11 15:25:22,689: DEBUG/MainProcess] beat: Ticking with max interval->5.00 minutes
+[2016-10-11 15:25:22,703: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:25:22,705: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 15:25:22,706: DEBUG/MainProcess] collect_ip_mac sent. id->3d615bbe-7413-4fd4-94c3-aa3c30b5bbfc
+[2016-10-11 15:25:22,706: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:26:22,715: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:26:22,716: DEBUG/MainProcess] collect_ip_mac sent. id->bcc6ba5d-c526-4e4d-ae9e-e69bbbc3c67e
+[2016-10-11 15:26:22,716: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:27:22,743: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:27:22,745: DEBUG/MainProcess] collect_ip_mac sent. id->a931512d-8fce-409d-9a21-30798fd57ae9
+[2016-10-11 15:27:22,745: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:28:22,741: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 15:28:22,744: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:28:22,746: DEBUG/MainProcess] collect_ip_mac sent. id->81b36995-5019-4853-b457-393a2ef842c8
+[2016-10-11 15:28:22,746: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:29:22,796: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:29:22,797: DEBUG/MainProcess] collect_ip_mac sent. id->e58e9443-985f-4b31-bfbd-2c507069a668
+[2016-10-11 15:29:22,798: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:30:22,848: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:30:22,849: DEBUG/MainProcess] collect_ip_mac sent. id->c16e93f3-ebd0-4e25-a0e1-32a3fc6f246d
+[2016-10-11 15:30:22,850: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:31:22,899: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 15:31:22,900: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:31:22,902: DEBUG/MainProcess] collect_ip_mac sent. id->65f05cf9-b235-4f1e-a53d-f3a4a6ff9cb5
+[2016-10-11 15:31:22,902: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:32:22,952: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:32:22,954: DEBUG/MainProcess] collect_ip_mac sent. id->954c2e53-d638-4706-a1d4-ed2ce8dc35d5
+[2016-10-11 15:32:22,954: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:33:23,005: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:33:23,006: DEBUG/MainProcess] collect_ip_mac sent. id->b580c765-6e6c-4b69-85a4-da39609fce7c
+[2016-10-11 15:33:23,006: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:34:23,024: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 15:34:23,025: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:34:23,026: DEBUG/MainProcess] collect_ip_mac sent. id->10edaa94-1865-4a6d-b66a-a3df7869cd67
+[2016-10-11 15:34:23,027: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:35:23,077: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:35:23,078: DEBUG/MainProcess] collect_ip_mac sent. id->7bc29fd2-3dd4-47d3-ac56-6a4a4e89a01c
+[2016-10-11 15:35:23,078: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:36:23,121: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:36:23,123: DEBUG/MainProcess] collect_ip_mac sent. id->85597dc4-6a1b-4383-b0c9-9b1f2f60fb49
+[2016-10-11 15:36:23,123: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:37:23,173: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 15:37:23,174: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:37:23,175: DEBUG/MainProcess] collect_ip_mac sent. id->933bdc7e-647d-4548-a9db-576bef2bb54f
+[2016-10-11 15:37:23,175: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:38:23,226: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:38:23,227: DEBUG/MainProcess] collect_ip_mac sent. id->06b8c042-648f-4522-a5ba-2984dbfd5e52
+[2016-10-11 15:38:23,227: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:39:23,278: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:39:23,279: DEBUG/MainProcess] collect_ip_mac sent. id->d0831c13-c81c-412b-8ead-f276afe9eff7
+[2016-10-11 15:39:23,279: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:40:23,329: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 15:40:23,330: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:40:23,331: DEBUG/MainProcess] collect_ip_mac sent. id->b35d51f4-1485-4e1d-8c86-3d52ca0d3786
+[2016-10-11 15:40:23,331: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:41:23,376: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:41:23,377: DEBUG/MainProcess] collect_ip_mac sent. id->bab36ea8-51cd-4ec3-a044-87912e6f4198
+[2016-10-11 15:41:23,377: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:42:23,424: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:42:23,425: DEBUG/MainProcess] collect_ip_mac sent. id->91f7fd29-db88-4864-abb7-38bc786436ae
+[2016-10-11 15:42:23,425: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:43:23,434: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 15:43:23,435: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:43:23,436: DEBUG/MainProcess] collect_ip_mac sent. id->2576afcd-c4fc-4432-8e9d-4b9644880fd9
+[2016-10-11 15:43:23,436: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:44:23,444: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:44:23,446: DEBUG/MainProcess] collect_ip_mac sent. id->0a3fc00d-5b12-4259-a3db-b82468fb034a
+[2016-10-11 15:44:23,446: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:45:23,496: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:45:23,498: DEBUG/MainProcess] collect_ip_mac sent. id->49aa417a-d621-4a6a-97bf-4cfeccbe94c1
+[2016-10-11 15:45:23,498: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:46:23,501: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 15:46:23,502: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:46:23,503: DEBUG/MainProcess] collect_ip_mac sent. id->7a13aecb-0bc0-4f23-bcea-d03f3f0d835f
+[2016-10-11 15:46:23,503: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:47:23,527: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:47:23,528: DEBUG/MainProcess] collect_ip_mac sent. id->80a58460-81a5-4cec-b664-adff9cf1d61f
+[2016-10-11 15:47:23,528: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:48:23,579: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:48:23,580: DEBUG/MainProcess] collect_ip_mac sent. id->6b86b109-1576-4d88-b7ff-ad2f5bf7e37b
+[2016-10-11 15:48:23,580: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:49:23,578: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 15:49:23,579: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:49:23,580: DEBUG/MainProcess] collect_ip_mac sent. id->c0d66039-fb8a-44d2-b47e-44e26327c184
+[2016-10-11 15:49:23,580: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+[2016-10-11 15:50:23,631: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 15:50:23,632: DEBUG/MainProcess] collect_ip_mac sent. id->25a90114-4195-4ecc-bdf5-bbb1d2448de8
+[2016-10-11 15:50:23,632: DEBUG/MainProcess] beat: Waking up in 59.99 seconds.
+celery beat v3.1.23 (Cipater) is starting.
+__    -    ... __   -        _
+Configuration ->
+    . broker -> redis://localhost:6379//
+    . loader -> celery.loaders.app.AppLoader
+    . scheduler -> celery.beat.PersistentScheduler
+    . db -> celerybeat-schedule
+    . logfile -> [stderr]@%DEBUG
+    . maxinterval -> now (0s)
+[2016-10-11 15:51:22,438: DEBUG/MainProcess] Setting default socket timeout to 30
+[2016-10-11 15:51:22,438: INFO/MainProcess] beat: Starting...
+[2016-10-11 15:51:22,442: ERROR/MainProcess] Removing corrupted schedule file 'celerybeat-schedule': error('Bad magic number',)
+Traceback (most recent call last):
+  File "/data/jump/env/lib/python2.7/site-packages/celery/beat.py", line 376, in setup_schedule
+    self._store = self._open_schedule()
+  File "/data/jump/env/lib/python2.7/site-packages/celery/beat.py", line 366, in _open_schedule
+    return self.persistence.open(self.schedule_filename, writeback=True)
+  File "/usr/local/python/lib/python2.7/shelve.py", line 243, in open
+    return DbfilenameShelf(filename, flag, protocol, writeback)
+  File "/usr/local/python/lib/python2.7/shelve.py", line 227, in __init__
+    Shelf.__init__(self, anydbm.open(filename, flag), protocol, writeback)
+  File "/usr/local/python/lib/python2.7/anydbm.py", line 85, in open
+    return mod.open(file, flag, mode)
+error: Bad magic number
+[2016-10-11 15:51:22,446: DEBUG/MainProcess] Current schedule:
+<Entry: every-60-min-update-job-status collect_ip_mac(300) <freq: 30.00 minutes>
+[2016-10-11 15:51:22,446: DEBUG/MainProcess] beat: Ticking with max interval->5.00 minutes
+[2016-10-11 15:51:22,460: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 15:56:22,551: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 16:01:22,616: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 16:06:22,668: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 16:11:22,719: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 16:16:22,775: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 16:21:22,535: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 16:21:22,539: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 16:21:22,540: DEBUG/MainProcess] collect_ip_mac sent. id->4563db7a-7eb3-4d6a-91bc-c87eefd910d4
+[2016-10-11 16:21:22,541: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 16:26:22,546: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 16:31:22,637: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 16:36:22,728: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 16:41:22,819: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 16:46:22,909: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 16:51:22,548: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 16:51:22,550: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 16:51:22,551: DEBUG/MainProcess] collect_ip_mac sent. id->8ec33354-edb1-4678-a0fc-bcc8cd5e96c6
+[2016-10-11 16:51:22,551: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 16:56:22,641: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 17:01:22,732: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 17:06:22,823: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 17:11:22,914: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 17:16:23,004: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 17:21:22,614: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 17:21:22,616: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 17:21:22,619: DEBUG/MainProcess] collect_ip_mac sent. id->445cf9c0-1b01-459f-bbab-aa85f04c97e4
+[2016-10-11 17:21:22,619: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 17:26:22,710: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 17:31:22,801: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 17:36:22,892: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 17:41:22,982: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 17:46:23,073: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 17:51:22,706: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 17:51:22,709: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 17:51:22,711: DEBUG/MainProcess] collect_ip_mac sent. id->c993564e-f410-45d6-ae4e-660606bb3ca8
+[2016-10-11 17:51:22,712: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 17:56:22,802: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 18:01:22,893: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 18:06:22,984: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 18:11:23,075: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 18:16:23,165: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 18:21:22,797: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 18:21:22,799: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 18:21:22,799: DEBUG/MainProcess] collect_ip_mac sent. id->47ad38d2-7631-4ff0-b6c8-a12cd92befbe
+[2016-10-11 18:21:22,799: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 18:26:22,890: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 18:31:22,981: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 18:36:23,072: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 18:41:23,163: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 18:46:23,254: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 18:51:22,888: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 18:51:22,890: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 18:51:22,892: DEBUG/MainProcess] collect_ip_mac sent. id->f035e8b1-1a93-4c56-b1c3-0401adfffe16
+[2016-10-11 18:51:22,892: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 18:56:22,978: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 19:01:23,045: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 19:06:23,136: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 19:11:23,226: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 19:16:23,317: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 19:21:22,979: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 19:21:22,981: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 19:21:22,982: DEBUG/MainProcess] collect_ip_mac sent. id->8e713426-1c6e-49f5-b84f-3d62845dcf23
+[2016-10-11 19:21:22,983: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 19:26:23,075: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 19:31:23,146: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 19:36:23,138: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 19:41:23,213: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 19:46:23,223: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 19:51:23,070: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 19:51:23,072: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 19:51:23,073: DEBUG/MainProcess] collect_ip_mac sent. id->17e3d2af-ede9-4ad8-84b9-92586b5c6fd4
+[2016-10-11 19:51:23,074: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 19:56:23,165: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 20:01:23,225: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 20:06:23,222: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 20:11:23,313: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 20:16:23,346: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 20:21:23,161: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 20:21:23,164: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 20:21:23,167: DEBUG/MainProcess] collect_ip_mac sent. id->654a5b77-f743-46b4-baa9-8bf0b544033c
+[2016-10-11 20:21:23,168: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 20:26:23,251: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 20:31:23,341: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 20:36:23,432: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 20:41:23,523: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 20:46:23,613: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 20:51:23,252: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 20:51:23,255: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 20:51:23,256: DEBUG/MainProcess] collect_ip_mac sent. id->d92f6f8d-4939-47e2-b248-a703d7f248e0
+[2016-10-11 20:51:23,257: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 20:56:23,338: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 21:01:23,428: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 21:06:23,519: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 21:11:23,610: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 21:16:23,714: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 21:21:23,311: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 21:21:23,314: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 21:21:23,316: DEBUG/MainProcess] collect_ip_mac sent. id->f740c2b1-119d-446d-bf4f-34200669af6b
+[2016-10-11 21:21:23,317: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 21:26:23,408: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 21:31:23,499: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 21:36:23,590: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 21:41:23,613: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 21:46:23,685: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 21:51:23,402: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 21:51:23,405: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 21:51:23,408: DEBUG/MainProcess] collect_ip_mac sent. id->3d2de08b-f714-4e2c-b786-5983b6cb5454
+[2016-10-11 21:51:23,408: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 21:56:23,498: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 22:01:23,572: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 22:06:23,662: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 22:11:23,689: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 22:16:23,754: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 22:21:23,493: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 22:21:23,496: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 22:21:23,497: DEBUG/MainProcess] collect_ip_mac sent. id->1cc5f229-bde1-4b9d-bc5b-f4cd8010282a
+[2016-10-11 22:21:23,498: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 22:26:23,578: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 22:31:23,669: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 22:36:23,760: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 22:41:23,771: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 22:46:23,847: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 22:51:23,585: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 22:51:23,587: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 22:51:23,589: DEBUG/MainProcess] collect_ip_mac sent. id->7a446aac-54e3-4c8a-9fb9-2e922a665b1a
+[2016-10-11 22:51:23,589: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 22:56:23,616: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 23:01:23,706: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 23:06:23,797: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 23:11:23,888: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 23:16:23,979: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 23:21:23,676: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 23:21:23,679: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 23:21:23,683: DEBUG/MainProcess] collect_ip_mac sent. id->d6a1e081-1f9a-4666-b67b-db9fd19ee24b
+[2016-10-11 23:21:23,683: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 23:26:23,775: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 23:31:23,847: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 23:36:23,927: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 23:41:24,018: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 23:46:24,108: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-11 23:51:23,767: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-11 23:51:23,769: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-11 23:51:23,771: DEBUG/MainProcess] collect_ip_mac sent. id->e53237a8-ac17-4bee-b166-08912d486523
+[2016-10-11 23:51:23,771: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-11 23:56:23,863: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 00:01:23,953: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 00:06:24,002: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 00:11:24,093: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 00:16:24,184: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 00:21:23,858: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 00:21:23,860: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 00:21:23,861: DEBUG/MainProcess] collect_ip_mac sent. id->a4f6cdc9-1211-4954-8e36-3d1381566af4
+[2016-10-12 00:21:23,862: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 00:26:23,953: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 00:31:24,043: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 00:36:24,125: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 00:41:24,216: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 00:46:24,306: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 00:51:23,950: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 00:51:23,951: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 00:51:23,953: DEBUG/MainProcess] collect_ip_mac sent. id->d22f5103-2542-43ab-87a8-975a1663b096
+[2016-10-12 00:51:23,954: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 00:56:24,045: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 01:01:24,136: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 01:06:24,212: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 01:11:24,302: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 01:16:24,393: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 01:21:24,041: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 01:21:24,043: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 01:21:24,044: DEBUG/MainProcess] collect_ip_mac sent. id->06ece9cc-5b69-459e-9d1f-9f8f36ba7b00
+[2016-10-12 01:21:24,045: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 01:26:24,135: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 01:31:24,226: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 01:36:24,317: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 01:41:24,408: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 01:46:24,499: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 01:51:24,086: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 01:51:24,088: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 01:51:24,090: DEBUG/MainProcess] collect_ip_mac sent. id->ed57cf44-aeaa-4f5a-a55c-047beb0036f1
+[2016-10-12 01:51:24,090: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 01:56:24,181: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 02:01:24,186: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 02:06:24,277: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 02:11:24,313: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 02:16:24,357: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 02:21:24,086: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 02:21:24,088: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 02:21:24,091: DEBUG/MainProcess] collect_ip_mac sent. id->9cae1eab-67f9-4c9d-ada1-c9ed48844d09
+[2016-10-12 02:21:24,091: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 02:26:24,183: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 02:31:24,221: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 02:36:24,312: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 02:41:24,382: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 02:46:24,421: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 02:51:24,144: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 02:51:24,147: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 02:51:24,148: DEBUG/MainProcess] collect_ip_mac sent. id->bf095b97-bdd5-42cf-b835-1c3c5c693c1b
+[2016-10-12 02:51:24,149: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 02:56:24,167: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 03:01:24,258: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 03:06:24,349: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 03:11:24,424: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 03:16:24,472: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 03:21:24,190: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 03:21:24,199: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 03:21:24,203: DEBUG/MainProcess] collect_ip_mac sent. id->a0b2d819-78ea-4795-bdb8-b4c0804f9855
+[2016-10-12 03:21:24,204: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 03:26:24,295: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 03:31:24,385: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 03:36:24,418: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 03:41:24,437: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 03:46:24,452: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 03:51:24,281: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 03:51:24,283: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 03:51:24,284: DEBUG/MainProcess] collect_ip_mac sent. id->1c9ef687-f17f-4858-ba60-9e940ad3df61
+[2016-10-12 03:51:24,284: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 03:56:24,366: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 04:01:24,456: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 04:06:24,547: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 04:11:24,638: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 04:16:24,690: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 04:21:24,368: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 04:21:24,371: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 04:21:24,372: DEBUG/MainProcess] collect_ip_mac sent. id->332e44b7-02c7-485c-bafc-517ade0d4496
+[2016-10-12 04:21:24,374: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 04:26:24,428: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 04:31:24,518: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 04:36:24,606: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 04:41:24,641: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 04:46:24,732: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 04:51:24,460: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 04:51:24,462: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 04:51:24,462: DEBUG/MainProcess] collect_ip_mac sent. id->67cf8980-d45f-45ba-99d8-2156e3ab59e0
+[2016-10-12 04:51:24,463: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 04:56:24,497: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 05:01:24,588: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 05:06:24,648: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 05:11:24,725: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 05:16:24,789: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 05:21:24,498: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 05:21:24,502: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 05:21:24,504: DEBUG/MainProcess] collect_ip_mac sent. id->430a3f29-948f-40bb-934c-1f05cca38001
+[2016-10-12 05:21:24,504: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 05:26:24,595: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 05:31:24,686: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 05:36:24,777: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 05:41:24,790: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 05:46:24,819: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 05:51:24,527: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 05:51:24,529: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 05:51:24,530: DEBUG/MainProcess] collect_ip_mac sent. id->18647464-9097-430b-baa8-712fa84b7211
+[2016-10-12 05:51:24,530: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 05:56:24,621: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 06:01:24,712: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 06:06:24,803: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 06:11:24,888: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 06:16:24,941: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 06:21:24,618: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 06:21:24,621: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 06:21:24,623: DEBUG/MainProcess] collect_ip_mac sent. id->830884ce-a6a8-4950-8bd3-0b5ad02a1fca
+[2016-10-12 06:21:24,623: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 06:26:24,714: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 06:31:24,805: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 06:36:24,895: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 06:41:24,986: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 06:46:25,010: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 06:51:24,677: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 06:51:24,681: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 06:51:24,682: DEBUG/MainProcess] collect_ip_mac sent. id->c4ffc935-7354-49b0-a474-69c43084bbab
+[2016-10-12 06:51:24,683: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 06:56:24,756: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 07:01:24,790: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 07:06:24,846: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 07:11:24,901: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 07:16:24,958: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 07:21:24,684: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 07:21:24,687: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 07:21:24,688: DEBUG/MainProcess] collect_ip_mac sent. id->a542bf8b-f300-4c85-a602-dcec2cc76267
+[2016-10-12 07:21:24,688: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 07:26:24,755: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 07:31:24,817: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 07:36:24,908: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 07:41:24,998: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 07:46:25,089: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 07:51:24,775: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 07:51:24,778: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 07:51:24,779: DEBUG/MainProcess] collect_ip_mac sent. id->2cf23f7a-8392-4e5e-932a-43484fa6e9f5
+[2016-10-12 07:51:24,779: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 07:56:24,790: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 08:01:24,827: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 08:06:24,899: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 08:11:24,990: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 08:16:25,083: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 08:21:24,786: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 08:21:24,789: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 08:21:24,790: DEBUG/MainProcess] collect_ip_mac sent. id->80fa7673-8b0a-4d07-96b2-b6cc1d2167fe
+[2016-10-12 08:21:24,790: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 08:26:24,874: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 08:31:24,936: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 08:36:24,971: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 08:41:25,016: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 08:46:25,031: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 08:51:24,848: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 08:51:24,851: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 08:51:24,855: DEBUG/MainProcess] collect_ip_mac sent. id->e3670c6d-774f-4c44-b923-568ade77850f
+[2016-10-12 08:51:24,857: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 08:56:24,948: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 09:01:25,038: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 09:06:25,127: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 09:11:25,218: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 09:16:25,308: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 09:21:24,920: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 09:21:24,922: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 09:21:24,924: DEBUG/MainProcess] collect_ip_mac sent. id->394ccc7c-48cf-444c-b256-3233c632f802
+[2016-10-12 09:21:24,924: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 09:26:25,012: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 09:31:25,103: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 09:36:25,104: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 09:41:25,178: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 09:46:25,269: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 09:51:24,999: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 09:51:25,001: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 09:51:25,002: DEBUG/MainProcess] collect_ip_mac sent. id->6e928c94-b706-4572-98c6-6a6de44eee95
+[2016-10-12 09:51:25,002: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 09:56:25,022: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 10:01:25,112: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 10:06:25,203: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 10:11:25,294: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 10:16:25,346: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 10:21:25,046: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 10:21:25,048: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 10:21:25,048: DEBUG/MainProcess] collect_ip_mac sent. id->1a5bdd5f-95bc-493a-af1c-94fbb5df4f7b
+[2016-10-12 10:21:25,048: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 10:26:25,062: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 10:31:25,153: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 10:36:25,192: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 10:41:25,283: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 10:46:25,309: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 10:51:25,137: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 10:51:25,138: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 10:51:25,139: DEBUG/MainProcess] collect_ip_mac sent. id->97e7e554-dc43-47ba-88ab-bf0e2f9eecff
+[2016-10-12 10:51:25,139: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 10:56:25,230: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 11:01:25,321: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 11:06:25,411: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 11:11:25,462: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 11:16:25,492: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 11:21:25,228: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 11:21:25,230: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 11:21:25,231: DEBUG/MainProcess] collect_ip_mac sent. id->9a1bb6fe-c248-48aa-8614-24448c8f2d51
+[2016-10-12 11:21:25,232: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 11:26:25,303: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 11:31:25,393: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 11:36:25,483: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 11:41:25,511: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 11:46:25,595: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 11:51:25,284: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 11:51:25,286: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 11:51:25,287: DEBUG/MainProcess] collect_ip_mac sent. id->2c00c995-4697-44de-9487-ab0fcb398b9c
+[2016-10-12 11:51:25,287: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 11:56:25,378: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 12:01:25,463: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 12:06:25,553: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 12:11:25,566: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 12:16:25,636: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 12:21:25,354: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 12:21:25,356: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 12:21:25,358: DEBUG/MainProcess] collect_ip_mac sent. id->e224e925-150a-4cf1-b4c2-be598d49b526
+[2016-10-12 12:21:25,358: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 12:26:25,448: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 12:31:25,476: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 12:36:25,567: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 12:41:25,605: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 12:46:25,648: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 12:51:25,361: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 12:51:25,365: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 12:51:25,367: DEBUG/MainProcess] collect_ip_mac sent. id->6c3c816c-eaef-4319-a85a-9e40d2ccad0b
+[2016-10-12 12:51:25,368: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 12:56:25,459: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 13:01:25,530: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 13:06:25,621: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 13:11:25,712: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 13:16:25,803: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 13:21:25,450: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 13:21:25,452: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 13:21:25,454: DEBUG/MainProcess] collect_ip_mac sent. id->950fea5d-5c34-44ab-928e-85c870a6c1f4
+[2016-10-12 13:21:25,454: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 13:26:25,483: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 13:31:25,493: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 13:36:25,584: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 13:41:25,675: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 13:46:25,714: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 13:51:25,541: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 13:51:25,544: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 13:51:25,546: DEBUG/MainProcess] collect_ip_mac sent. id->4a5317a6-c820-4856-aedd-6b904c89e6f8
+[2016-10-12 13:51:25,547: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 13:56:25,637: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 14:01:25,699: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 14:06:25,790: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 14:11:25,881: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 14:16:25,972: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 14:21:25,595: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 14:21:25,598: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 14:21:25,600: DEBUG/MainProcess] collect_ip_mac sent. id->d582cf00-1c40-4f5b-9310-cf6e1c594eb2
+[2016-10-12 14:21:25,601: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 14:26:25,679: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 14:31:25,690: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 14:36:25,780: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 14:41:25,834: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 14:46:25,925: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 14:51:25,686: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 14:51:25,688: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 14:51:25,690: DEBUG/MainProcess] collect_ip_mac sent. id->07d3304a-e3f5-4522-8dae-44eeacb0db97
+[2016-10-12 14:51:25,690: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 14:56:25,707: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 15:01:25,798: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 15:06:25,889: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 15:11:25,980: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 15:16:26,070: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 15:21:25,763: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 15:21:25,765: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 15:21:25,765: DEBUG/MainProcess] collect_ip_mac sent. id->fbe082fe-c9ba-4281-a54d-65e30791a992
+[2016-10-12 15:21:25,766: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 15:26:25,856: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 15:31:25,947: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 15:36:26,038: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 15:41:26,128: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 15:46:26,219: DEBUG/MainProcess] beat: Waking up in 4.99 minutes.
+[2016-10-12 15:51:25,855: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 15:51:25,856: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 15:51:25,858: DEBUG/MainProcess] collect_ip_mac sent. id->ec9168b3-a0b0-4d0b-b4c7-10cf63bdb3a6
+[2016-10-12 15:51:25,858: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 15:56:25,899: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 16:01:25,959: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 16:06:26,050: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 16:11:26,120: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 16:16:26,132: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 16:21:25,946: INFO/MainProcess] Scheduler: Sending due task every-60-min-update-job-status (collect_ip_mac)
+[2016-10-12 16:21:25,948: DEBUG/MainProcess] beat: Synchronizing schedule...
+[2016-10-12 16:21:25,950: DEBUG/MainProcess] collect_ip_mac sent. id->1ef3681e-43ed-4131-b12f-0ccd76e11c3a
+[2016-10-12 16:21:25,951: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 16:26:26,014: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+[2016-10-12 16:31:26,104: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.
+celery beat v3.1.19 (Cipater) is starting.
+__    -    ... __   -        _
+Configuration ->
+    . broker -> redis://localhost:6379//
+    . loader -> celery.loaders.app.AppLoader
+    . scheduler -> celery.beat.PersistentScheduler
+    . db -> celerybeat-schedule
+    . logfile -> [stderr]@%DEBUG
+    . maxinterval -> now (0s)

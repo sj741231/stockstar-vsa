@@ -1,0 +1,73 @@
+
+{% extends "base.html" %}
+{#{% load idc_tags %}#}
+{% block title %}zhengjin99运维·平台{% endblock %}
+{% block extra_css %}
+{#    <link rel="stylesheet" href="/static/css/AdminLTE.css">#}
+    <link rel="stylesheet" href="/static/AdminLTE/plugins/select2/select2.css">
+
+{% endblock %}
+{% block extra_js %}
+
+{% endblock %}
+
+
+{% block console_name %}
+
+{% endblock %}
+{% block ol_a_link %}
+
+{% endblock %}
+{% block main_content %}
+    <div class="row">
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">更新{{ name }}</h3>
+            </div>
+            <form role="form" method="POST"  enctype="multipart/form-data" name="form"> {% csrf_token %}
+                <div class="box-body">
+
+                    <div>
+                        {% for field in form %}
+                            <div class="form-group">
+                                {{ field.errors }}
+                                {{ field.label_tag }}
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="box-footer">
+                        <a href="{{ success_url }}"><button class="btn btn-primary" type="button" >取消</button></a>
+                        <button type="submit" class="btn btn-primary" id="Save" >更新</button>
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block end_js %}
+    <script src="/static/AdminLTE/plugins/select2/select2.full.js"></script>
+
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+            $("#table_data").dataTable({
+                "iDisplayLength":25});
+
+            $(".select2").select2();
+
+        });
+    </script>
+{% endblock %}
+
+
+
+
+
+

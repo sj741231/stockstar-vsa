@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{#{% load idc_tags %}#}
+{% block title %}虚拟机:{{ object.name }}配置信息{% endblock %}
+
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block console_name %}
+    {{ object.name }}
+{% endblock %}
+{% block ol_a_link %}
+
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">操作</h3>
+                </div>
+                <div class="box-body">
+                    <div class="btn-group-vertical">
+                        <button type="button" class="btn btn-info">on</button>
+                        <button type="button" class="btn btn-info">off</button>
+                        <button type="button" class="btn btn-info">reboot</button>
+                        <button type="button" class="btn btn-info">getmore</button>
+
+                    </div>
+{#                    <table>#}
+{#                        <tr>#}
+{#                        <td>poweron</td>#}
+{##}
+{#                        </tr>#}
+{#                        <tr>#}
+{#                        <td>poeroff</td>#}
+{##}
+{#                        </tr>#}
+{#<tr>#}
+{#                        <td>reboot</td>#}
+{##}
+{#</tr>#}
+{#<tr>#}
+{#                        <td>getmore</td>#}
+{##}
+{#</tr>#}
+{#                    </table>#}
+{#                    <span>poweron</span>#}
+{#                    <span>poweroff</span>#}
+{#                    <span>reboot</span>#}
+{##}
+{#                    <span>getmore</span>#}
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-xs-8">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">基本信息</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+
+
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th>配置</th>
+                                <th>参数</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>uuid</td>
+                                <td>{{ object.vmuuid }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>cpu</td>
+                                <td>{{ object.cpu }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>memory</td>
+                                <td>{{ object.memory }} MB</td>
+
+                            </tr>
+                            <tr>
+                                <td>ip</td>
+                                <td>{{ object.ip }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>operate system</td>
+                                <td>{{ object.system }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>所在物理机</td>
+                                <td><a href="{% url 'vcenter:serverdetail' pk=object.esxi.id  %}">{{ object.esxi }}</a></td>
+
+                            </tr>
+                            <tr>
+                                <td>所在数据中心</td>
+                                <td>{{ object.esxi.servercontainer }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>最后更新时间</td>
+                                <td>{{ object.updatetime|date:"Y-m-d H:i"  }}</td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- /box-body -->
+
+            </div>
+            <!-- /box -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+{% endblock %}
+
+{% block end_js %}
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+
+            //设定table_data 数据样式以及格式
+{#            $('#table_data').dataTable({#}
+{#                "bPaginate": false,//关闭js分页#}
+{#                "bLengthChange": false,//关闭表格宽度调整#}
+{#                "bFilter": true,//开启filter功能#}
+{#                "bSort": true,//开启排序功能#}
+{#                "bInfo": false,#}
+{#                "bAutoWidth": true#}
+{#            });#}
+        });
+    </script>
+{#    表单验证失败弹出表单#}
+
+{% endblock %}
+
+
+
+
+
+

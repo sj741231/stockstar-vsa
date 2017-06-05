@@ -1,0 +1,164 @@
+{% extends "generic/formlistview.html" %}
+
+{% block title %}
+证金运维平台-视频节点管理
+{% endblock %}
+
+{% block extra_js %}
+
+
+{% endblock %}
+
+
+{% block console_name %}
+    直播节点
+{% endblock %}
+
+
+{% block ext_modal %}
+    <div id="main_modal" class="modal fade" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">player</h4>
+                </div>
+
+                <div class="modal-body" id="player">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{#    <div id="main_modal" class="modal fade">#}
+{#        <div class="modal-header">#}
+{#            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>#}
+{#            <h3>JWPlayer6</h3>#}
+{#        </div>#}
+{#        <div class="modal-body" id="player">#}
+{#        </div>#}
+{#        <div class="modal-footer">#}
+{#            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"> 关闭 </button>#}
+{#        </div>#}
+{#    </div>#}
+{% endblock %}
+
+
+
+{% block table %}
+    <thead>
+    <tr>
+        <th>名称</th>
+        <th>频道</th>
+{#        <th>协议类型</th>#}
+        <th>地址</th>
+        <th>播放</th>
+
+        <th>操作</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in result %}
+        <tr>
+            <td><a href="{% url 'live:nodeedit' pk=i.id %}">{{ i.name }}</a></td>
+            <td>{{ i.channal.name }}</td>
+{#            <td>{{ i.protocol }}</td>#}
+            <td>{{ i.address }}</td>
+            <td>
+                {% if i.protocol == "http" %}
+{#                    <button id="play_{{ i.id }}" about="{{ i.protocol }}://{{ i.address }}/live/{{ i.channal.name }}.m3u8"><i class="fa fa-desktop">播放</i></button>#}
+                    <button id="play_{{ i.id }}" about="{{ i.address }}"><i class="fa fa-desktop">播放</i></button>
+
+                    &nbsp;&nbsp;
+                    <a href="{% url 'live:mobileplay' pk=i.id %}"><button><i class="fa fa-mobile-phone"></i></button></a>
+                {% endif %}
+                {% if i.protocol == "rtmp" %}
+                    <button id="play_{{ i.id }}" about="{{ i.address }}"><i class="fa fa-desktop">播放</i></button>
+
+                {% endif %}
+            </td>
+
+            <td>
+
+                {#                <a href="{% url 'live:watchvideo' pk=i.id %}">查看</a>#}
+                {#                                &nbsp;&nbsp;#}
+
+
+{#                <a href="{% url 'live:nodeedit' pk=i.id %}">修改</a>#}
+{#                &nbsp;&nbsp;#}
+                <a href="{% url 'live:nodeedit' pk=i.id %}">删除</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+{% endblock %}
+
+
+{% block end_js %}
+
+    <script type="application/javascript" src="/static/players/js/srs.player.js"></script>
+    <script type="application/javascript" src="/static/players/js/jwplayer.js"></script>
+    <script type='text/javascript'>jwplayer.key = 'N8zhkmYvvRwOhz4aTGkySoEri4x+9pQwR7GHIQ=='; </script>
+    <script type="application/javascript" src="/static/players/js/srs.page.js"></script>
+    <script type="application/javascript" src="/static/players/js/srs.utility.js"></script>
+    <script type="application/javascript" src="/static/players/js/srs.publisher.js"></script>
+    <script type="application/javascript" src="/static/players/js/winlin.utility.js"></script>
+    <script type="application/javascript">
+
+        $(function(){
+
+            $("td button[id*=play_]").click(function(){
+                button = $(this);
+                {#                alert(button.attr('about'));#}
+                _url = button.attr('about');
+                var query = parse_query_string();
+
+                play_video(_url);
+
+{#                alert(_url)#}
+                {#$("#main_modal1").modal({show:true, keyboard:false});#}
+            });
+
+        });
+        function play_video(url){
+            _url = url;
+            $("#main_modal").modal("show");
+
+                $("#div_container").remove();
+
+                var div_container = $("<div/>");
+                $(div_container).attr("id", "div_container");
+                $("#player").append(div_container);
+
+                var player = $("<div/>");
+                $(player).attr("id", "player_id");
+                $(div_container).append(player);
+
+            var conf = {
+                file: url,
+                width: 560,
+                height: srs_get_player_height(),
+                autostart: true,
+                analytics: { enabled: false}
+            };
+            _player = jwplayer('player_id').setup(conf);
+
+
+        }
+
+    </script>
+        {% if form.errors %}
+        <script>
+            $(function() {
+                var test1 = document.getElementById("addform");
+                test1.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}

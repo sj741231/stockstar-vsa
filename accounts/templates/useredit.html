@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{#{% load idc_tags %}#}
+{% block title %}zhengjin99运维·平台--用户管理{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/AdminLTE.css">
+{% endblock %}
+{% block extra_js %}
+
+{% endblock %}
+
+
+{% block console_name %}
+    用户编辑
+{% endblock %}
+{% block ol_a_link %}
+
+{% endblock %}
+{% block main_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box primary">
+                <div class="box-header">
+                    <h3 class="box-title"> 用户--</h3>
+                </div>
+                <form role="form" method="post">{% csrf_token %}
+                    <div class="box-body">
+                        {% for field in form %}
+                            <div class="form-group">
+                                {{ field.errors }}
+                                {{ field.label_tag }}  {{ field }}
+                            </div>
+{#                        {{ form.as_p }}#}
+
+                        {% endfor %}
+                    </div>
+                    <div class="box-footer">
+                        <a href="/accounts/userlist">
+                            <input type="button" value="Cancel">
+                        </a>
+                        <input type="submit" value="Update" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block end_js %}
+    <!-- jQuery 2.0.2 -->
+    <script src="/static/js/googleapis/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script>
+        $(function() {
+            $("#example1").dataTable();
+            //设定table_data 数据样式以及格式
+            $('#table_data').dataTable({
+                "bPaginate": false,//关闭js分页
+                "bLengthChange": false,//关闭表格宽度调整
+                "bFilter": true,//开启filter功能
+                "bSort": true,//开启排序功能
+                "bInfo": false,
+                "bAutoWidth": false
+            });
+        });
+    </script>
+{#    表单验证失败弹出表单#}
+    {% if form.errors %}
+        <script>
+            $(function() {
+                var test1 = document.getElementById("addform");
+                test1.click();
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
